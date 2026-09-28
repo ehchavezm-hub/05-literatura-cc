@@ -32,25 +32,24 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Navegación por pestañas ───────────────────────────────────────────────
-  function iniciarNavegacion() {
+  function activarTab(destino) {
     const tabs = document.querySelectorAll('[data-tab]');
     const panels = document.querySelectorAll('[data-panel]');
+    tabs.forEach(t => {
+      const activo = t.dataset.tab === destino;
+      t.setAttribute('aria-selected', activo);
+      t.classList.toggle('tab-activa', activo);
+    });
+    panels.forEach(p => { p.hidden = p.dataset.panel !== destino; });
+    if (destino === 'novedades') cargarNovedades();
+    if (destino === 'ensayos') cargarEnsayos();
+    if (destino === 'obras') cargarObras();
+    if (destino === 'autores') renderizarAutores();
+  }
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const destino = tab.dataset.tab;
-        tabs.forEach(t => {
-          const activo = t.dataset.tab === destino;
-          t.setAttribute('aria-selected', activo);
-          t.classList.toggle('tab-activa', activo);
-        });
-        panels.forEach(p => {
-          p.hidden = p.dataset.panel !== destino;
-        });
-        if (destino === 'novedades') cargarNovedades();
-        if (destino === 'ensayos') cargarEnsayos();
-        if (destino === 'obras') cargarObras();
-      });
+  function iniciarNavegacion() {
+    document.querySelectorAll('[data-tab]').forEach(tab => {
+      tab.addEventListener('click', () => activarTab(tab.dataset.tab));
     });
   }
 
@@ -61,38 +60,45 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Módulos de autores ────────────────────────────────────────────────────
+  let autoresRendered = false;
+
+  function buscarAutor(nombre) {
+    activarTab('buscar');
+    const input = document.getElementById('blg-busqueda');
+    if (input) { input.value = nombre; ejecutarBusqueda(); }
+  }
+
   function renderizarAutores() {
-    const contenedor = document.getElementById('blg-autores');
-    if (!contenedor) return;
+    const contenedor = document.getElementById('blg-autores-panel');
+    if (!contenedor || autoresRendered) return;
+    autoresRendered = true;
     const { CONTINENTES } = BLG_Autores;
 
     contenedor.innerHTML = CONTINENTES.map(cont => {
       const principales = cont.autores.slice(0, 5);
       const otros = cont.autores.slice(5);
       return `
-        <div class="mb-4">
-          <h3 class="font-semibold text-blg-gray text-sm mb-2">${cont.icono} ${cont.nombre}</h3>
-          <div class="flex flex-wrap gap-2">
+        <div class="autores-continente">
+          <div class="autores-continente-cabecera">
+            <span class="autores-continente-icono" aria-hidden="true">${cont.icono}</span>
+            <span class="autores-continente-nombre">${escHtml(cont.nombre)}</span>
+          </div>
+          <div class="autores-grid">
             ${principales.map(a => `
-              <button class="btn-autor px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm hover:bg-blg-blue hover:text-white transition-colors"
-                data-autor="${escHtml(a.nombre)}" title="${escHtml(a.pais)}">
-                ${escHtml(a.nombre)}
+              <button class="btn-autor-panel" data-autor="${escHtml(a.nombre)}" title="${escHtml(a.pais)}">
+                ${escHtml(a.nombre)}<span class="pais">${escHtml(a.pais)}</span>
               </button>`).join('')}
             ${otros.length ? `
-              <button class="btn-mas-autores px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                data-continente="${cont.id}">Otros…</button>` : ''}
+              <button class="btn-mas-panel" data-continente="${cont.id}">+${otros.length} más</button>` : ''}
           </div>
         </div>`;
     }).join('');
 
-    contenedor.querySelectorAll('.btn-autor').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const input = document.getElementById('blg-busqueda');
-        if (input) { input.value = btn.dataset.autor; ejecutarBusqueda(); }
-      });
+    contenedor.querySelectorAll('.btn-autor-panel').forEach(btn => {
+      btn.addEventListener('click', () => buscarAutor(btn.dataset.autor));
     });
 
-    contenedor.querySelectorAll('.btn-mas-autores').forEach(btn => {
+    contenedor.querySelectorAll('.btn-mas-panel').forEach(btn => {
       btn.addEventListener('click', () => abrirModalAutores(btn.dataset.continente));
     });
   }
@@ -116,8 +122,7 @@ window.BLG_VERSION = '__VERSION__';
     body.querySelectorAll('.btn-autor-modal').forEach(btn => {
       btn.addEventListener('click', () => {
         cerrarModal();
-        const input = document.getElementById('blg-busqueda');
-        if (input) { input.value = btn.dataset.autor; ejecutarBusqueda(); }
+        buscarAutor(btn.dataset.autor);
       });
     });
     modal.hidden = false;
@@ -277,7 +282,6 @@ window.BLG_VERSION = '__VERSION__';
     iniciarModoOscuro();
     iniciarNavegacion();
     renderizarTemas();
-    renderizarAutores();
     iniciarVoz();
 
     document.getElementById('blg-btn-escala-menos')?.addEventListener('click', () => {

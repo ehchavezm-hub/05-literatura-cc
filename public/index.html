@@ -131,6 +131,7 @@
     <button class="tab" role="tab" data-tab="novedades" aria-selected="false" aria-controls="panel-novedades">📰 Novedades &amp; Reseñas</button>
     <button class="tab" role="tab" data-tab="ensayos" aria-selected="false" aria-controls="panel-ensayos">📄 Ensayos &amp; Crítica</button>
     <button class="tab" role="tab" data-tab="obras" aria-selected="false" aria-controls="panel-obras">📚 Obras &amp; Libros</button>
+    <button class="tab" role="tab" data-tab="autores" aria-selected="false" aria-controls="panel-autores">✍️ Autores</button>
   </div>
 </nav>
 
@@ -159,9 +160,6 @@
 
   <p class="seccion-titulo">Temas y Géneros Literarios</p>
   <div id="blg-temas" class="grid-temas" role="group" aria-label="Filtrar por tema literario"></div>
-
-  <p class="seccion-titulo">Autores por Continente</p>
-  <div id="blg-autores" role="group" aria-label="Filtrar por autor"></div>
 
   <p class="seccion-titulo">Resultados</p>
   <div id="blg-resultados-busqueda" class="lista-resultados" aria-live="polite" aria-label="Resultados de búsqueda">
@@ -220,6 +218,14 @@
   </select>
 
   <div id="blg-resultados-obras" class="lista-resultados" aria-live="polite"></div>
+</section>
+
+<!-- ═══ PANEL: AUTORES ══════════════════════════════════════════════════ -->
+<section id="panel-autores" class="panel" data-panel="autores" role="tabpanel" hidden>
+  <p style="color:var(--color-texto-sec); font-size:0.85rem; margin: 16px 0 24px;">
+    Seleccione un autor para buscar sus obras, ensayos y reseñas.
+  </p>
+  <div id="blg-autores-panel" role="group" aria-label="Autores por continente"></div>
 </section>
 </main>
 
