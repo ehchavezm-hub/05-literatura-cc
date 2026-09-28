@@ -85,8 +85,12 @@
     const metaAutor  = item.autores
       ? `<p class="tarjeta-v2-meta-fila"><strong>Autor:</strong> ${escHtml(item.autores)}</p>`
       : '';
-    const metaFuente = item.fuente
-      ? `<p class="tarjeta-v2-meta-fila"><strong>Fuente:</strong> <a class="tarjeta-v2-fuente-link" href="${escHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer">${escHtml(item.fuente)}${item.revista && item.revista !== item.fuente ? '' : ' (revista académica)'}</a></p>`
+    // Mostrar editorial real cuando existe; si no, la plataforma (Open Library, Crossref…)
+    const fuenteTexto = item.editorial || item.revista || item.fuente || '';
+    const plataforma = item.fuente && fuenteTexto !== item.fuente ? ` — vía ${item.fuente}` : '';
+    const etiquetaFuente = tipo === 'ensayo' ? 'Revista' : (item.editorial ? 'Editorial' : 'Fuente');
+    const metaFuente = fuenteTexto
+      ? `<p class="tarjeta-v2-meta-fila"><strong>${etiquetaFuente}:</strong> <a class="tarjeta-v2-fuente-link" href="${escHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer">${escHtml(fuenteTexto)}</a><span class="tarjeta-fuente-via">${escHtml(plataforma)}</span></p>`
       : '';
     const metaFecha  = item.fecha
       ? `<p class="tarjeta-v2-meta-fila"><strong>Fecha:</strong> ${escHtml(formatearFechaLarga(item.fecha))}</p>`
