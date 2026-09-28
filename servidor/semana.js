@@ -3,26 +3,34 @@ const { buscarCrossref } = require('./fuentes/crossref');
 const { buscarGoogleBooks } = require('./fuentes/libros-recientes');
 
 async function obtenerNovedadesSemana() {
-  const [noticias, ensayos, libros] = await Promise.allSettled([
-    obtenerNoticias(7),
-    buscarCrossref('literatura hispanoamericana', 7),
-    buscarGoogleBooks('novela latinoamericana'),
+  const [noticias, cr1, cr2, gb1, gb2] = await Promise.allSettled([
+    obtenerNoticias(14),
+    buscarCrossref('literatura hispanoamericana critica resena', 14),
+    buscarCrossref('literary criticism book review fiction', 14),
+    buscarGoogleBooks('novela latinoamericana contemporanea'),
+    buscarGoogleBooks('new literary fiction world poetry'),
   ]);
   return [
     ...(noticias.value || []),
-    ...(ensayos.value || []),
-    ...(libros.value || []),
+    ...(cr1.value     || []),
+    ...(cr2.value     || []),
+    ...(gb1.value     || []),
+    ...(gb2.value     || []),
   ];
 }
 
 async function obtenerNovedadesAnio() {
-  const [noticias, ensayos] = await Promise.allSettled([
-    obtenerNoticias(365),
-    buscarCrossref('critica literaria latinoamerica', 365),
+  const [noticias, cr1, cr2, cr3] = await Promise.allSettled([
+    obtenerNoticias(730),
+    buscarCrossref('critica literaria latinoamerica resena', 730),
+    buscarCrossref('literary criticism world fiction essay', 730),
+    buscarCrossref('literatura contemporanea ensayo cultural', 730),
   ]);
   return [
     ...(noticias.value || []),
-    ...(ensayos.value || []),
+    ...(cr1.value     || []),
+    ...(cr2.value     || []),
+    ...(cr3.value     || []),
   ];
 }
 
