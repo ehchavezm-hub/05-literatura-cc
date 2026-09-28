@@ -26,7 +26,14 @@
           fuente: item['container-title']?.[0] || 'Crossref',
           tipo: 'ensayo',
           acceso_abierto: isOA,
-          fecha: item.published?.['date-parts']?.[0]?.[0]?.toString() || null,
+          fecha: (function() {
+            const p = item.published?.['date-parts']?.[0] || [];
+            if (!p[0]) return null;
+            const y = p[0], m = p[1], d = p[2];
+            if (d)  return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            if (m)  return `${y}-${String(m).padStart(2,'0')}`;
+            return String(y);
+          })(),
           ambito: 'internacional',
         };
       });

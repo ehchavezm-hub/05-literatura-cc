@@ -46,7 +46,14 @@
   function formatearFechaLarga(fechaStr) {
     if (!fechaStr) return '';
     const solo = String(fechaStr).trim();
+    // Solo año
     if (/^\d{4}$/.test(solo)) return solo;
+    // Año-mes sin día (ej. "2025-03")
+    if (/^\d{4}-\d{2}$/.test(solo)) {
+      const d = new Date(solo + '-01');
+      if (!isNaN(d)) return d.toLocaleDateString('es-PE', { month: 'long', year: 'numeric' });
+    }
+    // Fecha completa
     const d = new Date(solo);
     if (isNaN(d)) return solo;
     return d.toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric' });

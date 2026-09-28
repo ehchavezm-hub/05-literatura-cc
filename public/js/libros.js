@@ -39,7 +39,7 @@
           url: info.infoLink || '',
           fuente: 'Google Books',
           tipo: 'libro',
-          fecha: info.publishedDate?.substring(0, 4) || null,
+          fecha: info.publishedDate || null,
           editorial: info.publisher || '',
           portada: info.imageLinks?.thumbnail || null,
           ambito: 'internacional',
