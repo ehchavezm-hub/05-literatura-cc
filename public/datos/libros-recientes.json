@@ -1,1 +1,137 @@
-[]
+[
+  {
+    "titulo": "Literatura peruana",
+    "autores": "Augusto Tamayo Vargas",
+    "url": "https://openlibrary.org/works/OL3619235W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1953",
+    "editorial": ""
+  },
+  {
+    "titulo": "La literatura peruana",
+    "autores": "Luis Alberto Sánchez",
+    "url": "https://openlibrary.org/works/OL1190712W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1928",
+    "editorial": ""
+  },
+  {
+    "titulo": "Para una periodización de la literatura peruana",
+    "autores": "Carlos García-Bedoya Maguiña",
+    "url": "https://openlibrary.org/works/OL4214671W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1990",
+    "editorial": ""
+  },
+  {
+    "titulo": "Apuntes para un estudio de la literatura peruana",
+    "autores": "Augusto Tamayo Vargas",
+    "url": "https://openlibrary.org/works/OL3619231W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1947",
+    "editorial": ""
+  },
+  {
+    "titulo": "Manual de literatura peruana",
+    "autores": "César Toro Montalvo",
+    "url": "https://openlibrary.org/works/OL23328529W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1990",
+    "editorial": ""
+  },
+  {
+    "titulo": "Literatura peruana hoy",
+    "autores": "Karl Kohut, Sonia V. Rose",
+    "url": "https://openlibrary.org/works/OL19243787W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1998",
+    "editorial": ""
+  },
+  {
+    "titulo": "Elementos de literatura peruana",
+    "autores": "Alberto Tauro",
+    "url": "https://openlibrary.org/works/OL10600994W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1946",
+    "editorial": ""
+  },
+  {
+    "titulo": "Altas voces de la literatura peruana y latinoamericana",
+    "autores": "Maynor Freyre",
+    "url": "https://openlibrary.org/works/OL16497559W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "2010",
+    "editorial": ""
+  },
+  {
+    "titulo": "El cholo en la literatura peruana",
+    "autores": "César Augusto Angeles Caballero",
+    "url": "https://openlibrary.org/works/OL993462W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "2003",
+    "editorial": ""
+  },
+  {
+    "titulo": "Literatura peruana",
+    "autores": "César Augusto Angeles Caballero",
+    "url": "https://openlibrary.org/works/OL993482W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1967",
+    "editorial": ""
+  },
+  {
+    "titulo": "Literatura peruana",
+    "autores": "Augusto Tamayo Vargas",
+    "url": "https://openlibrary.org/works/OL38830373W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1953",
+    "editorial": ""
+  },
+  {
+    "titulo": "Historia de la literatura peruana",
+    "autores": "Félix Huamán Cabrera, Carmela Abad Mendieta",
+    "url": "https://openlibrary.org/works/OL23950755W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "2003",
+    "editorial": ""
+  },
+  {
+    "titulo": "Elementos de literatura peruana",
+    "autores": "Alberto Tauro",
+    "url": "https://openlibrary.org/works/OL3416733W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1946",
+    "editorial": ""
+  },
+  {
+    "titulo": "La literatura peruana",
+    "autores": "Luis Alberto Sánchez",
+    "url": "https://openlibrary.org/works/OL38623344W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1973",
+    "editorial": ""
+  },
+  {
+    "titulo": "Historia de la literatura peruana",
+    "autores": "César Toro Montalvo",
+    "url": "https://openlibrary.org/works/OL3556645W",
+    "fuente": "Open Library",
+    "tipo": "libro",
+    "fecha": "1991",
+    "editorial": ""
+  }
+]
