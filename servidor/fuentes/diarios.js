@@ -489,6 +489,72 @@ const FUENTES_DIARIOS = [
   { pais: 'XX', nombre: 'Revista Ñ',                        url: 'https://www.clarin.com/rss/cultura/',                        ambito: 'internacional' },
   { pais: 'XX', nombre: 'Quimera Revista',                  url: 'https://revistaquimera.com/feed/',                           ambito: 'internacional' },
   { pais: 'XX', nombre: 'Cuadernos Hispanoamericanos',      url: 'https://cuadernoshispanoamericanos.com/feed/',               ambito: 'internacional' },
+
+  /* ══════════════════════════════════════════════════════════════
+   * TOP 50 DIARIOS MUNDIALES POR CIRCULACIÓN
+   * ══════════════════════════════════════════════════════════════ */
+
+  /* ── JAPÓN – Grandes diarios de circulación ─────────────────── */
+  { pais: 'JP', nombre: 'Yomiuri Shimbun',                  url: 'https://www.yomiuri.co.jp/rss/culture/',                     ambito: 'internacional' },
+  { pais: 'JP', nombre: 'Asahi Shimbun Culture',            url: 'https://www.asahi.com/rss/asahi/culture.rss',               ambito: 'internacional' },
+  { pais: 'JP', nombre: 'Mainichi Shimbun Culture',         url: 'https://mainichi.jp/rss/articles.rss',                      ambito: 'internacional' },
+  { pais: 'JP', nombre: 'Nikkei Culture',                   url: 'https://www.nikkei.com/rss/culture.xml',                    ambito: 'internacional' },
+  { pais: 'JP', nombre: 'Chunichi Shimbun',                 url: 'https://www.chunichi.co.jp/rss/list/entertainment.xml',     ambito: 'internacional' },
+  { pais: 'JP', nombre: 'Sankei Shimbun Culture',           url: 'https://www.sankei.com/life/entertainment/news/index.rss',  ambito: 'internacional' },
+
+  /* ── INDIA – Grandes diarios por idioma ─────────────────────── */
+  { pais: 'IN', nombre: 'Times of India Books',             url: 'https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms', ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Dainik Bhaskar Sahitya',           url: 'https://www.bhaskar.com/rss-feed/9/',                       ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Dainik Jagran Sahitya',            url: 'https://www.jagran.com/rss/sahitya-kala-culture.xml',       ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Malayala Manorama',                url: 'https://www.manoramaonline.com/rss/literature.xml',         ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Amar Ujala Sahitya',               url: 'https://www.amarujala.com/rss/sahitya.xml',                 ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Eenadu Sahitya',                   url: 'https://www.eenadu.net/rss/sahityam.xml',                   ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Mathrubhumi Literature',           url: 'https://www.mathrubhumi.com/rss/literature.xml',            ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Hindustan Hindi Culture',          url: 'https://www.livehindustan.com/rss/entertainment.xml',       ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Sakaal Sahitya',                   url: 'https://www.esakal.com/rss/sahitya.xml',                    ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Punjab Kesari',                    url: 'https://www.punjabkesari.in/rss/news.xml',                  ambito: 'internacional' },
+  { pais: 'IN', nombre: 'Anandabazar Patrika Sahitya',      url: 'https://www.anandabazar.com/rss/sahitya.rss',               ambito: 'internacional' },
+
+  /* ── EE. UU. – Grandes diarios de referencia ────────────────── */
+  { pais: 'US', nombre: 'Wall Street Journal Books',        url: 'https://feeds.wsj.com/wsj/xml/rss/3_7085.xml',             ambito: 'internacional' },
+  { pais: 'US', nombre: 'Washington Post Arts',             url: 'https://feeds.washingtonpost.com/rss/entertainment',        ambito: 'internacional' },
+  { pais: 'US', nombre: 'Los Angeles Times Books',          url: 'https://www.latimes.com/books/rss2.0.xml',                  ambito: 'internacional' },
+  { pais: 'US', nombre: 'Chicago Tribune Arts',             url: 'https://www.chicagotribune.com/arcio/rss/category/entertainment/', ambito: 'internacional' },
+  { pais: 'US', nombre: 'Boston Globe Arts',                url: 'https://www.bostonglobe.com/rss/arts/',                     ambito: 'internacional' },
+
+  /* ── REINO UNIDO – Grandes diarios por circulación ──────────── */
+  { pais: 'GB', nombre: 'The Times Culture',                url: 'https://www.thetimes.co.uk/rss/Arts.xml',                   ambito: 'internacional' },
+  { pais: 'GB', nombre: 'The Sun Books',                    url: 'https://www.thesun.co.uk/feed/',                            ambito: 'internacional' },
+  { pais: 'GB', nombre: 'Daily Mail Books',                 url: 'https://www.dailymail.co.uk/entertainment/rss.xml',         ambito: 'internacional' },
+
+  /* ── ALEMANIA – Grandes diarios nacionales ───────────────────── */
+  { pais: 'DE', nombre: 'Süddeutsche Zeitung Kultur',       url: 'https://rss.sueddeutsche.de/rss/Kultur',                    ambito: 'internacional' },
+  { pais: 'DE', nombre: 'Bild Kultur',                      url: 'https://www.bild.de/rss-feeds/rss-16725138.bild.html',      ambito: 'internacional' },
+  { pais: 'DE', nombre: 'Handelsblatt Kultur',              url: 'https://www.handelsblatt.com/contentexport/feed/kultur/',   ambito: 'internacional' },
+
+  /* ── CHINA – Diarios estatales de gran circulación ──────────── */
+  { pais: 'CN', nombre: 'People\'s Daily Culture',          url: 'http://www.people.com.cn/rss/culture.xml',                  ambito: 'internacional' },
+  { pais: 'CN', nombre: 'Xinhua Culture',                   url: 'http://www.xinhuanet.com/culture/rss.xml',                  ambito: 'internacional' },
+  { pais: 'CN', nombre: 'China Daily Culture',              url: 'https://www.chinadaily.com.cn/rss/culture_rss.xml',         ambito: 'internacional' },
+
+  /* ── BRASIL – Tercer gran diario ────────────────────────────── */
+  { pais: 'BR', nombre: 'Estadão Cultura',                  url: 'https://www.estadao.com.br/rss/',                           ambito: 'internacional' },
+  { pais: 'BR', nombre: 'Valor Econômico Cultura',          url: 'https://valor.globo.com/rss/',                              ambito: 'internacional' },
+
+  /* ── COREA DEL SUR – Top 3 por circulación ──────────────────── */
+  { pais: 'KR', nombre: 'Chosun Ilbo Culture',              url: 'https://www.chosun.com/arc/outboundfeeds/rss/category/culture/', ambito: 'internacional' },
+  { pais: 'KR', nombre: 'Dong-A Ilbo Culture',              url: 'https://www.donga.com/news/rss/culture.xml',                ambito: 'internacional' },
+  { pais: 'KR', nombre: 'Hankook Ilbo Culture',             url: 'https://www.hankookilbo.com/rss/culture',                   ambito: 'internacional' },
+
+  /* ── AUSTRALIA – Segundo gran diario ────────────────────────── */
+  { pais: 'AU', nombre: 'The Australian Culture',           url: 'https://www.theaustralian.com.au/feed/',                    ambito: 'internacional' },
+  { pais: 'AU', nombre: 'Australian Financial Review Arts', url: 'https://www.afr.com/rss',                                   ambito: 'internacional' },
+
+  /* ── SUECIA – Ampliado ───────────────────────────────────────── */
+  { pais: 'SE', nombre: 'Göteborgs-Posten Kultur',          url: 'https://www.gp.se/kultur/rss.xml',                          ambito: 'internacional' },
+
+  /* ── PAÍSES BAJOS – NRC ampliado ────────────────────────────── */
+  { pais: 'NL', nombre: 'Trouw Cultuur',                    url: 'https://www.trouw.nl/cultuur/rss.xml',                      ambito: 'internacional' },
 ];
 
 const UA = 'Mozilla/5.0 (compatible; BLG-Bot/2.0; +https://ehchavezm-hub.github.io/05-literatura-cc/)';

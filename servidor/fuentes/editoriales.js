@@ -455,6 +455,99 @@ const EDITORIALES_PAIS = [
   { pais: 'XX', nombre: 'Peirene Press',                    lang: 'en' },
   { pais: 'XX', nombre: 'Pushkin Press',                    lang: 'en' },
   { pais: 'XX', nombre: 'Biblioasis',                       lang: 'en' },
+
+  /* ══════════════════════════════════════════════════════════════
+   * TOP 50 GRUPOS EDITORIALES MUNDIALES
+   * ══════════════════════════════════════════════════════════════ */
+
+  /* ── GRUPOS ACADÉMICOS Y CIENTÍFICOS ─────────────────────────── */
+  { pais: 'GB', nombre: 'Elsevier',                         lang: 'en' },
+  { pais: 'GB', nombre: 'Oxford University Press',          lang: 'en' },
+  { pais: 'GB', nombre: 'Cambridge University Press',       lang: 'en' },
+  { pais: 'GB', nombre: 'Routledge',                        lang: 'en' },
+  { pais: 'GB', nombre: 'Taylor and Francis',               lang: 'en' },
+  { pais: 'DE', nombre: 'Springer',                         lang: 'de' },
+  { pais: 'DE', nombre: 'Palgrave Macmillan',               lang: 'en' },
+  { pais: 'US', nombre: 'Wiley',                            lang: 'en' },
+  { pais: 'US', nombre: 'Wiley-Blackwell',                  lang: 'en' },
+  { pais: 'US', nombre: 'McGraw-Hill Education',            lang: 'en' },
+  { pais: 'US', nombre: 'Cengage Learning',                 lang: 'en' },
+  { pais: 'CA', nombre: 'Thomson Reuters',                  lang: 'en' },
+
+  /* ── FICCIÓN Y NO FICCIÓN COMERCIAL ─────────────────────────── */
+  { pais: 'US', nombre: 'Knopf',                            lang: 'en' },
+  { pais: 'US', nombre: 'Viking Press',                     lang: 'en' },
+  { pais: 'US', nombre: 'Vintage Books',                    lang: 'en' },
+  { pais: 'US', nombre: 'Doubleday',                        lang: 'en' },
+  { pais: 'US', nombre: 'Scribner',                         lang: 'en' },
+  { pais: 'US', nombre: 'Atria Books',                      lang: 'en' },
+  { pais: 'US', nombre: 'Pocket Books',                     lang: 'en' },
+  { pais: 'US', nombre: 'William Morrow',                   lang: 'en' },
+  { pais: 'US', nombre: 'Harlequin',                        lang: 'en' },
+  { pais: 'US', nombre: 'Zondervan',                        lang: 'en' },
+  { pais: 'US', nombre: 'Little Brown',                     lang: 'en' },
+  { pais: 'US', nombre: 'Grand Central Publishing',         lang: 'en' },
+  { pais: 'US', nombre: 'Farrar Straus Giroux',             lang: 'en' },
+  { pais: 'US', nombre: 'W W Norton',                       lang: 'en' },
+  { pais: 'US', nombre: 'Algonquin Books',                  lang: 'en' },
+  { pais: 'US', nombre: 'Workman Publishing',               lang: 'en' },
+  { pais: 'US', nombre: 'Sourcebooks',                      lang: 'en' },
+  { pais: 'US', nombre: 'Chronicle Books',                  lang: 'en' },
+  { pais: 'US', nombre: 'Abrams Books',                     lang: 'en' },
+  { pais: 'US', nombre: 'Harry N Abrams',                   lang: 'en' },
+  { pais: 'US', nombre: 'Hay House',                        lang: 'en' },
+  { pais: 'FR', nombre: 'Editions Grasset',                 lang: 'fr' },
+  { pais: 'FR', nombre: 'Librairie Artheme Fayard',         lang: 'fr' },
+  { pais: 'FR', nombre: 'Larousse',                         lang: 'fr' },
+  { pais: 'FR', nombre: 'Hachette Roman',                   lang: 'fr' },
+
+  /* ── GRUPOS HISPANÓFONOS ─────────────────────────────────────── */
+  { pais: 'ES', nombre: 'Seix Barral',                      lang: 'es' },
+  { pais: 'ES', nombre: 'Espasa',                           lang: 'es' },
+  { pais: 'ES', nombre: 'Destino Ediciones',                lang: 'es' },
+  { pais: 'ES', nombre: 'Editorial Planeta',                lang: 'es' },
+  { pais: 'ES', nombre: 'Santillana',                       lang: 'es' },
+  { pais: 'ES', nombre: 'Loqueleo',                         lang: 'es' },
+
+  /* ── GRUPOS EDUCATIVOS EUROPEOS ──────────────────────────────── */
+  { pais: 'GB', nombre: 'Pearson Education',                lang: 'en' },
+  { pais: 'GB', nombre: 'Longman',                          lang: 'en' },
+  { pais: 'DE', nombre: 'Ernst Klett Verlag',               lang: 'de' },
+  { pais: 'DE', nombre: 'Cornelsen Verlag',                 lang: 'de' },
+  { pais: 'DE', nombre: 'Haufe Verlag',                     lang: 'de' },
+
+  /* ── GRUPOS NÓRDICOS ─────────────────────────────────────────── */
+  { pais: 'SE', nombre: 'Albert Bonniers Forlag',           lang: 'sv' },
+  { pais: 'DK', nombre: 'Egmont Books',                     lang: 'da' },
+
+  /* ── GRUPOS ITALIANOS ────────────────────────────────────────── */
+  { pais: 'IT', nombre: 'Rizzoli',                          lang: 'it' },
+  { pais: 'IT', nombre: 'Guanda',                           lang: 'it' },
+  { pais: 'IT', nombre: 'Mauri Spagnol',                    lang: 'it' },
+
+  /* ── GRUPOS NEERLANDESES ─────────────────────────────────────── */
+  { pais: 'NL', nombre: 'Luitingh-Sijthoff',                lang: 'nl' },
+
+  /* ── GRUPOS JAPONESES ────────────────────────────────────────── */
+  { pais: 'JP', nombre: 'Shueisha',                         lang: 'ja' },
+  { pais: 'JP', nombre: 'Shogakukan',                       lang: 'ja' },
+  { pais: 'JP', nombre: 'Kadokawa',                         lang: 'ja' },
+  { pais: 'JP', nombre: 'Gakken',                           lang: 'ja' },
+
+  /* ── GRUPOS CHINOS ───────────────────────────────────────────── */
+  { pais: 'CN', nombre: 'People\'s Literature Publishing House', lang: 'zh' },
+  { pais: 'CN', nombre: 'Commercial Press China',           lang: 'zh' },
+  { pais: 'CN', nombre: 'Jiangsu Phoenix Publishing',       lang: 'zh' },
+  { pais: 'CN', nombre: 'Hunan Literature Art Publishing',  lang: 'zh' },
+  { pais: 'CN', nombre: 'Zhejiang People\'s Publishing',    lang: 'zh' },
+
+  /* ── EDITORIALES INFANTILES / JUVENILES ─────────────────────── */
+  { pais: 'US', nombre: 'Scholastic Press',                 lang: 'en' },
+  { pais: 'US', nombre: 'Scholastic',                       lang: 'en' },
+
+  /* ── EDITORIALES BRASILEÑAS COMPLEMENTARIAS ──────────────────── */
+  { pais: 'BR', nombre: 'Saraiva Educacao',                 lang: 'pt' },
+  { pais: 'BR', nombre: 'Quadrinhos na Cia',                lang: 'pt' },
 ];
 
 async function buscarGoogleBooksPorEditorial(editorial) {
