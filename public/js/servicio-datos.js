@@ -31,5 +31,9 @@
     return cargarJSON('/datos/libros-recientes.json');
   }
 
-  return { cargarUltimaSemana, cargarArchivo, cargarLibrosRecientes };
+  async function cargarDiarios() {
+    return cargarJSON('/datos/diarios.json');
+  }
+
+  return { cargarUltimaSemana, cargarArchivo, cargarLibrosRecientes, cargarDiarios };
 });

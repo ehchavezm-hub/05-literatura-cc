@@ -215,10 +215,17 @@ window.BLG_VERSION = '__VERSION__';
     const contenedor = document.getElementById('blg-resultados-novedades');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
-    const items = await BLG_ServicioDatos.cargarUltimaSemana();
+    const [semana, diarios] = await Promise.allSettled([
+      BLG_ServicioDatos.cargarUltimaSemana(),
+      BLG_ServicioDatos.cargarDiarios(),
+    ]);
+    const todos = [
+      ...(semana.value || []),
+      ...(diarios.value || []),
+    ];
     const periodo = obtenerPeriodo('novedades');
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
-    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(items, diasAtras);
+    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(todos, diasAtras);
     BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No hay novedades recientes.');
     contenedor.dataset.cargado = '1';
   }
