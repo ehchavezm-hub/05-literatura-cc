@@ -55,8 +55,29 @@ window.BLG_VERSION = '__VERSION__';
 
   // ── Selector de período ───────────────────────────────────────────────────
   function obtenerPeriodo(panelId) {
-    const sel = document.querySelector(`[data-periodo="${panelId}"]`);
-    return sel ? sel.value : '1';
+    const activo = document.querySelector(`.periodo-btns[data-periodo="${panelId}"] .btn-periodo-activo`);
+    return activo ? activo.dataset.valor : '1';
+  }
+
+  function iniciarBotonesPeriodo() {
+    document.querySelectorAll('.periodo-btns').forEach(grupo => {
+      grupo.querySelectorAll('.btn-periodo').forEach(btn => {
+        btn.addEventListener('click', () => {
+          grupo.querySelectorAll('.btn-periodo').forEach(b => {
+            b.classList.remove('btn-periodo-activo');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('btn-periodo-activo');
+          btn.setAttribute('aria-pressed', 'true');
+
+          const panel = grupo.dataset.periodo;
+          if (panel === 'buscar') ejecutarBusqueda();
+          if (panel === 'novedades') { delete document.getElementById('blg-resultados-novedades')?.dataset.cargado; cargarNovedades(); }
+          if (panel === 'ensayos')   { delete document.getElementById('blg-resultados-ensayos')?.dataset.cargado;   cargarEnsayos(); }
+          if (panel === 'obras')     { delete document.getElementById('blg-resultados-obras')?.dataset.cargado;     cargarObras(); }
+        });
+      });
+    });
   }
 
   // ── Módulos de autores ────────────────────────────────────────────────────
@@ -281,6 +302,7 @@ window.BLG_VERSION = '__VERSION__';
     cargarEscala();
     iniciarModoOscuro();
     iniciarNavegacion();
+    iniciarBotonesPeriodo();
     renderizarTemas();
     iniciarVoz();
 
@@ -304,15 +326,10 @@ window.BLG_VERSION = '__VERSION__';
     const form = document.getElementById('blg-form-busqueda');
     form?.addEventListener('submit', e => { e.preventDefault(); ejecutarBusqueda(); });
 
-    document.querySelectorAll('[data-periodo]').forEach(sel => {
-      sel.addEventListener('change', () => {
-        const panel = sel.dataset.periodo;
-        if (panel === 'buscar') ejecutarBusqueda();
-        if (panel === 'novedades') { delete document.getElementById('blg-resultados-novedades')?.dataset.cargado; cargarNovedades(); }
-        if (panel === 'ensayos') { delete document.getElementById('blg-resultados-ensayos')?.dataset.cargado; cargarEnsayos(); }
-        if (panel === 'obras') { delete document.getElementById('blg-resultados-obras')?.dataset.cargado; cargarObras(); }
-      });
-    });
+    // Pre-cargar todos los paneles al inicio con período de 1 año
+    cargarNovedades();
+    cargarEnsayos();
+    cargarObras();
   }
 
   if (document.readyState === 'loading') {

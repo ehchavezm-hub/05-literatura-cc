@@ -148,15 +148,13 @@
     <button class="btn-buscar" type="submit">Buscar</button>
   </form>
 
-  <label for="periodo-buscar" class="seccion-titulo">Período de tiempo</label>
-  <select id="periodo-buscar" class="selector-periodo" data-periodo="buscar" aria-label="Período de búsqueda">
-    <option value="1" selected>Último año (365 días)</option>
-    <option value="2">Últimos 2 años</option>
-    <option value="3">Últimos 3 años</option>
-    <option value="4">Últimos 4 años</option>
-    <option value="5">Últimos 5 años</option>
-    <option value="historico">Desde el inicio de los tiempos (Histórico completo)</option>
-  </select>
+  <p class="seccion-titulo">Período de tiempo</p>
+  <div class="periodo-btns" role="group" aria-label="Período de búsqueda" data-periodo="buscar">
+    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
+    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
+    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
+    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
+  </div>
 
   <p class="seccion-titulo">Temas y Géneros Literarios</p>
   <div id="blg-temas" class="grid-temas" role="group" aria-label="Filtrar por tema literario"></div>
@@ -173,15 +171,13 @@
 <section id="panel-novedades" class="panel" data-panel="novedades" role="tabpanel" hidden>
   <h2 class="seccion-titulo">Novedades literarias y reseñas recientes</h2>
 
-  <label for="periodo-novedades" class="seccion-titulo">Período de tiempo</label>
-  <select id="periodo-novedades" class="selector-periodo" data-periodo="novedades" aria-label="Período de novedades">
-    <option value="1" selected>Último año (365 días)</option>
-    <option value="2">Últimos 2 años</option>
-    <option value="3">Últimos 3 años</option>
-    <option value="4">Últimos 4 años</option>
-    <option value="5">Últimos 5 años</option>
-    <option value="historico">Histórico completo</option>
-  </select>
+  <p class="seccion-titulo">Período de tiempo</p>
+  <div class="periodo-btns" role="group" aria-label="Período de novedades" data-periodo="novedades">
+    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
+    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
+    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
+    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
+  </div>
 
   <div id="blg-resultados-novedades" class="lista-resultados" aria-live="polite"></div>
 </section>
@@ -190,15 +186,13 @@
 <section id="panel-ensayos" class="panel" data-panel="ensayos" role="tabpanel" hidden>
   <h2 class="seccion-titulo">Ensayos académicos y crítica literaria</h2>
 
-  <label for="periodo-ensayos" class="seccion-titulo">Período de tiempo</label>
-  <select id="periodo-ensayos" class="selector-periodo" data-periodo="ensayos" aria-label="Período de ensayos">
-    <option value="1" selected>Último año (365 días)</option>
-    <option value="2">Últimos 2 años</option>
-    <option value="3">Últimos 3 años</option>
-    <option value="4">Últimos 4 años</option>
-    <option value="5">Últimos 5 años</option>
-    <option value="historico">Histórico completo</option>
-  </select>
+  <p class="seccion-titulo">Período de tiempo</p>
+  <div class="periodo-btns" role="group" aria-label="Período de ensayos" data-periodo="ensayos">
+    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
+    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
+    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
+    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
+  </div>
 
   <div id="blg-resultados-ensayos" class="lista-resultados" aria-live="polite"></div>
 </section>
@@ -207,15 +201,13 @@
 <section id="panel-obras" class="panel" data-panel="obras" role="tabpanel" hidden>
   <h2 class="seccion-titulo">Obras, libros clásicos y contemporáneos</h2>
 
-  <label for="periodo-obras" class="seccion-titulo">Período de tiempo</label>
-  <select id="periodo-obras" class="selector-periodo" data-periodo="obras" aria-label="Período de obras">
-    <option value="1" selected>Último año (365 días)</option>
-    <option value="2">Últimos 2 años</option>
-    <option value="3">Últimos 3 años</option>
-    <option value="4">Últimos 4 años</option>
-    <option value="5">Últimos 5 años</option>
-    <option value="historico">Histórico completo</option>
-  </select>
+  <p class="seccion-titulo">Período de tiempo</p>
+  <div class="periodo-btns" role="group" aria-label="Período de obras" data-periodo="obras">
+    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
+    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
+    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
+    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
+  </div>
 
   <div id="blg-resultados-obras" class="lista-resultados" aria-live="polite"></div>
 </section>
