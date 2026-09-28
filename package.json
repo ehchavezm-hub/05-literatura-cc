@@ -1,0 +1,18 @@
+{
+  "name": "biblioteca-literaria-global",
+  "version": "1.0.0",
+  "description": "Buscador de literatura, ensayos, reseñas y obras clásicas",
+  "scripts": {
+    "start": "node servidor.js",
+    "sin-internet": "node servidor.js --sin-internet",
+    "test": "node --test pruebas/pruebas.test.js",
+    "css": "npx tailwindcss -i estilos-fuente/tailwind.css -o public/css/tailwind.css --minify",
+    "actualizar": "node herramientas/actualizar-semana.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

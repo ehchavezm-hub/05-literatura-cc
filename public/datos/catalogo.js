@@ -1,0 +1,21 @@
+/* Catálogo local de obras e investigaciones imprescindibles */
+var BLG_CATALOGO = [
+  { titulo: 'La ciudad y los perros', autores: 'Mario Vargas Llosa', tipo: 'clasico', ambito: 'nacional', fecha: '1963', url: 'https://openlibrary.org/search?q=ciudad+perros+vargas+llosa', fuente: 'Catálogo BLG' },
+  { titulo: 'Conversación en La Catedral', autores: 'Mario Vargas Llosa', tipo: 'clasico', ambito: 'nacional', fecha: '1969', url: 'https://openlibrary.org/search?q=conversacion+catedral+vargas+llosa', fuente: 'Catálogo BLG' },
+  { titulo: 'Los ríos profundos', autores: 'José María Arguedas', tipo: 'clasico', ambito: 'nacional', fecha: '1958', url: 'https://openlibrary.org/search?q=rios+profundos+arguedas', fuente: 'Catálogo BLG' },
+  { titulo: 'Trilce', autores: 'César Vallejo', tipo: 'clasico', ambito: 'nacional', fecha: '1922', url: 'https://www.gutenberg.org/ebooks/search/?query=vallejo', fuente: 'Catálogo BLG', acceso: 'libre' },
+  { titulo: 'Los heraldos negros', autores: 'César Vallejo', tipo: 'clasico', ambito: 'nacional', fecha: '1919', url: 'https://www.gutenberg.org/ebooks/search/?query=vallejo+heraldos', fuente: 'Catálogo BLG', acceso: 'libre' },
+  { titulo: 'Cien años de soledad', autores: 'Gabriel García Márquez', tipo: 'clasico', ambito: 'internacional', fecha: '1967', url: 'https://openlibrary.org/search?q=cien+anos+soledad', fuente: 'Catálogo BLG' },
+  { titulo: 'El amor en los tiempos del cólera', autores: 'Gabriel García Márquez', tipo: 'clasico', ambito: 'internacional', fecha: '1985', url: 'https://openlibrary.org/search?q=amor+tiempos+colera', fuente: 'Catálogo BLG' },
+  { titulo: 'Canto general', autores: 'Pablo Neruda', tipo: 'clasico', ambito: 'internacional', fecha: '1950', url: 'https://openlibrary.org/search?q=canto+general+neruda', fuente: 'Catálogo BLG' },
+  { titulo: 'Veinte poemas de amor y una canción desesperada', autores: 'Pablo Neruda', tipo: 'clasico', ambito: 'internacional', fecha: '1924', url: 'https://www.gutenberg.org/ebooks/search/?query=neruda', fuente: 'Catálogo BLG', acceso: 'libre' },
+  { titulo: 'Ficciones', autores: 'Jorge Luis Borges', tipo: 'clasico', ambito: 'internacional', fecha: '1944', url: 'https://openlibrary.org/search?q=ficciones+borges', fuente: 'Catálogo BLG' },
+  { titulo: 'El Aleph', autores: 'Jorge Luis Borges', tipo: 'clasico', ambito: 'internacional', fecha: '1949', url: 'https://openlibrary.org/search?q=aleph+borges', fuente: 'Catálogo BLG' },
+  { titulo: 'El extranjero', autores: 'Albert Camus', tipo: 'clasico', ambito: 'internacional', fecha: '1942', url: 'https://openlibrary.org/search?q=extranjero+camus', fuente: 'Catálogo BLG' },
+  { titulo: 'La peste', autores: 'Albert Camus', tipo: 'clasico', ambito: 'internacional', fecha: '1947', url: 'https://openlibrary.org/search?q=peste+camus', fuente: 'Catálogo BLG' },
+  { titulo: 'Don Quijote de la Mancha', autores: 'Miguel de Cervantes', tipo: 'clasico', ambito: 'internacional', fecha: '1605', url: 'https://www.gutenberg.org/ebooks/2000', fuente: 'Project Gutenberg', acceso: 'libre' },
+  { titulo: 'Rayuela', autores: 'Julio Cortázar', tipo: 'clasico', ambito: 'internacional', fecha: '1963', url: 'https://openlibrary.org/search?q=rayuela+cortazar', fuente: 'Catálogo BLG' },
+  { titulo: 'Pedro Páramo', autores: 'Juan Rulfo', tipo: 'clasico', ambito: 'internacional', fecha: '1955', url: 'https://openlibrary.org/search?q=pedro+paramo+rulfo', fuente: 'Catálogo BLG' },
+  { titulo: 'La casa verde', autores: 'Mario Vargas Llosa', tipo: 'clasico', ambito: 'nacional', fecha: '1966', url: 'https://openlibrary.org/search?q=casa+verde+vargas+llosa', fuente: 'Catálogo BLG' },
+  { titulo: 'Un mundo para Julius', autores: 'Alfredo Bryce Echenique', tipo: 'clasico', ambito: 'nacional', fecha: '1970', url: 'https://openlibrary.org/search?q=mundo+julius+bryce', fuente: 'Catálogo BLG' },
+];

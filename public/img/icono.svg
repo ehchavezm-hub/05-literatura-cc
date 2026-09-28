@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- Libro base -->
+  <rect x="10" y="14" width="34" height="42" rx="4" fill="#007AFF" opacity="0.15"/>
+  <rect x="12" y="16" width="30" height="38" rx="3" fill="#007AFF" opacity="0.25"/>
+  <!-- Lomo -->
+  <rect x="10" y="14" width="6" height="42" rx="3" fill="#007AFF"/>
+  <!-- Pluma -->
+  <path d="M38 10 Q52 8 54 22 Q46 20 42 28 L36 44 L32 38 Z" fill="#AF52DE" opacity="0.9"/>
+  <path d="M36 44 L32 38 L34 36 Z" fill="#AF52DE"/>
+  <line x1="40" y1="26" x2="36" y2="44" stroke="white" stroke-width="1.5" opacity="0.6"/>
+</svg>

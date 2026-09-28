@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Literaria Global</title>
+  <meta name="description" content="Buscador de literatura, ensayos, reseñas y obras clásicas de prestigio mundial">
+  <meta name="theme-color" content="#007AFF">
+  <link rel="icon" href="img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Tailwind compilado (fallback inline si no existe) -->
+  <style>
+    /* Reset mínimo para el caso sin Tailwind compilado */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; font-size: inherit; background: none; border: none; }
+    input, select { font-family: inherit; font-size: inherit; }
+    [hidden] { display: none !important; }
+
+    /* Layout */
+    .contenedor { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+    .cabecera { background: rgba(242,242,247,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--color-borde); position: sticky; top: 0; z-index: 30; padding: 12px 16px; }
+    .dark .cabecera { background: rgba(28,28,30,0.85); }
+    .cabecera-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .logo { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; }
+    .logo img { width: 40px; height: 40px; }
+    .logo-titulo { font-size: 1.1rem; font-weight: 700; color: var(--color-texto); line-height: 1.2; }
+    .logo-subtitulo { font-size: 0.75rem; color: var(--color-texto-sec); }
+    .cabecera-controles { display: flex; align-items: center; gap: 8px; }
+    .btn-escala { width: 44px; height: 44px; border-radius: 10px; background: var(--color-card); border: 1px solid var(--color-borde); font-weight: 700; color: var(--color-blue); display: flex; align-items: center; justify-content: center; }
+    .btn-ayuda { height: 44px; padding: 0 16px; border-radius: 10px; background: var(--color-card); border: 1px solid var(--color-borde); color: var(--color-blue); font-size: 0.875rem; white-space: nowrap; }
+
+    /* Pestañas */
+    .tabs { display: flex; gap: 6px; padding: 12px 16px; max-width: 900px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .tab { flex-shrink: 0; height: 44px; padding: 0 18px; border-radius: 22px; border: 1.5px solid var(--color-borde); background: var(--color-card); color: var(--color-texto); font-size: 0.9rem; font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 6px; transition: background .15s, color .15s, border-color .15s; }
+    .tab-activa { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
+
+    /* Paneles */
+    .panel { padding: 0 16px 32px; max-width: 900px; margin: 0 auto; }
+    .seccion-titulo { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--color-texto-sec); margin: 20px 0 10px; }
+
+    /* Buscador */
+    .form-busqueda { display: flex; gap: 8px; margin: 16px 0; }
+    .input-busqueda { flex: 1; height: 52px; border-radius: 14px; border: 1.5px solid var(--color-borde); background: var(--color-card); padding: 0 16px; font-size: 1rem; color: var(--color-texto); outline: none; transition: border-color .15s; }
+    .input-busqueda:focus { border-color: var(--color-blue); }
+    .dark .input-busqueda { background: #2C2C2E; }
+    .btn-buscar { height: 52px; padding: 0 24px; border-radius: 14px; background: var(--color-blue); color: #fff; font-weight: 700; font-size: 1rem; white-space: nowrap; transition: opacity .15s; }
+    .btn-buscar:hover { opacity: .85; }
+    .btn-voz { width: 52px; height: 52px; border-radius: 14px; background: var(--color-card); border: 1.5px solid var(--color-borde); color: var(--color-blue); font-size: 1.3rem; display: flex; align-items: center; justify-content: center; }
+
+    /* Selector período */
+    .selector-periodo { height: 44px; border-radius: 10px; border: 1.5px solid var(--color-borde); background: var(--color-card); padding: 0 12px; font-size: 0.875rem; color: var(--color-texto); margin-bottom: 16px; }
+    .dark .selector-periodo { background: #2C2C2E; }
+
+    /* Tarjetas de tema y autor */
+    .grid-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px; }
+    .btn-tema { min-height: 56px; border-radius: 14px; border: 1.5px solid var(--color-borde); background: var(--color-card); padding: 10px 14px; text-align: left; color: var(--color-texto); transition: background .15s, color .15s, border-color .15s; display: flex; align-items: center; gap: 10px; }
+    .btn-tema:hover { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
+    .grid-autores-continente { margin-bottom: 12px; }
+    .btn-autor { min-height: 44px; padding: 6px 14px; border-radius: 10px; border: 1.5px solid var(--color-borde); background: var(--color-card); color: var(--color-texto); font-size: 0.875rem; transition: background .15s, color .15s; }
+    .btn-autor:hover { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
+    .btn-mas-autores { min-height: 44px; padding: 6px 14px; border-radius: 10px; border: 1.5px dashed var(--color-borde); background: transparent; color: var(--color-texto-sec); font-size: 0.875rem; }
+
+    /* Resultados */
+    .lista-resultados { display: grid; gap: 12px; }
+    .tarjeta { background: var(--color-card); border-radius: 14px; border: 1px solid var(--color-borde); border-left: 4px solid var(--color-blue); padding: 14px 16px; transition: box-shadow .15s; }
+    .tarjeta:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .tarjeta-inner { display: flex; gap: 12px; }
+    .tarjeta-icono { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .tarjeta-titulo { font-weight: 600; color: var(--color-texto); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tarjeta-titulo:hover { color: var(--color-blue); }
+    .tarjeta-autores { font-size: 0.85rem; color: var(--color-texto-sec); margin-top: 4px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .tarjeta-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+    .badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
+    .badge-nacional { background: #FFE5E5; color: #C0392B; }
+    .dark .badge-nacional { background: #4A1515; color: #FF6B6B; }
+    .badge-libre { background: #E5F9ED; color: #1A7A3C; }
+    .dark .badge-libre { background: #0D3D20; color: #4ADE80; }
+    .tarjeta-fuente { font-size: 0.75rem; color: var(--color-texto-sec); }
+    .tarjeta-fecha { font-size: 0.75rem; color: var(--color-texto-sec); }
+
+    /* Cargando */
+    .cargando { display: flex; justify-content: center; align-items: center; padding: 64px 16px; gap: 12px; color: var(--color-texto-sec); }
+    .spinner { width: 36px; height: 36px; border: 3px solid var(--color-borde); border-top-color: var(--color-blue); border-radius: 50%; animation: spin 1s linear infinite; }
+
+    /* Dialog ayuda */
+    dialog { border-radius: 18px; padding: 28px 24px; max-width: 480px; width: 92%; }
+    dialog h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+    dialog p, dialog li { font-size: 0.9rem; line-height: 1.6; color: var(--color-texto); margin-bottom: 8px; }
+    dialog ul { padding-left: 20px; }
+    .btn-cerrar-dialog { margin-top: 16px; height: 44px; width: 100%; border-radius: 12px; background: var(--color-blue); color: #fff; font-weight: 700; font-size: 1rem; }
+
+    /* Versión */
+    .version-footer { text-align: center; font-size: 0.7rem; color: var(--color-texto-sec); padding: 24px 16px; }
+
+    @media (max-width: 480px) {
+      .logo-titulo { font-size: 0.95rem; }
+      .tabs { gap: 4px; padding: 10px 12px; }
+      .tab { font-size: 0.82rem; padding: 0 12px; }
+      .grid-temas { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ CABECERA ═══════════════════════════════════════════════════════════ -->
+<header class="cabecera" role="banner">
+  <div class="cabecera-inner">
+    <div class="logo">
+      <img src="img/icono.svg" alt="Biblioteca Literaria Global" width="40" height="40">
+      <div>
+        <div class="logo-titulo">Biblioteca Literaria Global</div>
+        <div class="logo-subtitulo">Buscador de literatura, ensayos, reseñas y obras clásicas</div>
+      </div>
+    </div>
+    <div class="cabecera-controles">
+      <button id="blg-btn-escala-menos" class="btn-escala" aria-label="Reducir tamaño de letra" title="A−">A−</button>
+      <button id="blg-btn-escala-mas"   class="btn-escala" aria-label="Aumentar tamaño de letra" title="A+">A+</button>
+      <button id="blg-btn-ayuda" class="btn-ayuda" aria-label="Ayuda">❓ Ayuda</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ NAVEGACIÓN ════════════════════════════════════════════════════════ -->
+<nav role="navigation" aria-label="Secciones principales">
+  <div class="tabs" role="tablist">
+    <button class="tab tab-activa" role="tab" data-tab="buscar" aria-selected="true" aria-controls="panel-buscar">🔍 Buscar</button>
+    <button class="tab" role="tab" data-tab="novedades" aria-selected="false" aria-controls="panel-novedades">📰 Novedades &amp; Reseñas</button>
+    <button class="tab" role="tab" data-tab="ensayos" aria-selected="false" aria-controls="panel-ensayos">📄 Ensayos &amp; Crítica</button>
+    <button class="tab" role="tab" data-tab="obras" aria-selected="false" aria-controls="panel-obras">📚 Obras &amp; Libros</button>
+  </div>
+</nav>
+
+<!-- ═══ PANEL: BUSCAR ════════════════════════════════════════════════════ -->
+<main>
+<section id="panel-buscar" class="panel" data-panel="buscar" role="tabpanel" aria-labelledby="tab-buscar">
+
+  <form id="blg-form-busqueda" class="form-busqueda" role="search" aria-label="Buscar en la biblioteca">
+    <label for="blg-busqueda" class="sr-only">Buscar autor, obra o tema literario</label>
+    <input id="blg-busqueda" class="input-busqueda" type="search"
+      placeholder="Buscar autor, obra o tema literario…"
+      autocomplete="off" spellcheck="false">
+    <button id="blg-btn-voz" class="btn-voz" type="button" aria-label="Buscar con voz">🎤</button>
+    <button class="btn-buscar" type="submit">Buscar</button>
+  </form>
+
+  <label for="periodo-buscar" class="seccion-titulo">Período de tiempo</label>
+  <select id="periodo-buscar" class="selector-periodo" data-periodo="buscar" aria-label="Período de búsqueda">
+    <option value="1" selected>Último año (365 días)</option>
+    <option value="2">Últimos 2 años</option>
+    <option value="3">Últimos 3 años</option>
+    <option value="4">Últimos 4 años</option>
+    <option value="5">Últimos 5 años</option>
+    <option value="historico">Desde el inicio de los tiempos (Histórico completo)</option>
+  </select>
+
+  <p class="seccion-titulo">Temas y Géneros Literarios</p>
+  <div id="blg-temas" class="grid-temas" role="group" aria-label="Filtrar por tema literario"></div>
+
+  <p class="seccion-titulo">Autores por Continente</p>
+  <div id="blg-autores" role="group" aria-label="Filtrar por autor"></div>
+
+  <p class="seccion-titulo">Resultados</p>
+  <div id="blg-resultados-busqueda" class="lista-resultados" aria-live="polite" aria-label="Resultados de búsqueda">
+    <p style="color:var(--color-texto-sec); padding: 32px 0; text-align:center;">
+      Escriba un autor, obra o tema y presione <strong>Buscar</strong>, o seleccione un tema o autor arriba.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ PANEL: NOVEDADES ═════════════════════════════════════════════════ -->
+<section id="panel-novedades" class="panel" data-panel="novedades" role="tabpanel" hidden>
+  <h2 class="seccion-titulo">Novedades literarias y reseñas recientes</h2>
+
+  <label for="periodo-novedades" class="seccion-titulo">Período de tiempo</label>
+  <select id="periodo-novedades" class="selector-periodo" data-periodo="novedades" aria-label="Período de novedades">
+    <option value="1" selected>Último año (365 días)</option>
+    <option value="2">Últimos 2 años</option>
+    <option value="3">Últimos 3 años</option>
+    <option value="4">Últimos 4 años</option>
+    <option value="5">Últimos 5 años</option>
+    <option value="historico">Histórico completo</option>
+  </select>
+
+  <div id="blg-resultados-novedades" class="lista-resultados" aria-live="polite"></div>
+</section>
+
+<!-- ═══ PANEL: ENSAYOS ═══════════════════════════════════════════════════ -->
+<section id="panel-ensayos" class="panel" data-panel="ensayos" role="tabpanel" hidden>
+  <h2 class="seccion-titulo">Ensayos académicos y crítica literaria</h2>
+
+  <label for="periodo-ensayos" class="seccion-titulo">Período de tiempo</label>
+  <select id="periodo-ensayos" class="selector-periodo" data-periodo="ensayos" aria-label="Período de ensayos">
+    <option value="1" selected>Último año (365 días)</option>
+    <option value="2">Últimos 2 años</option>
+    <option value="3">Últimos 3 años</option>
+    <option value="4">Últimos 4 años</option>
+    <option value="5">Últimos 5 años</option>
+    <option value="historico">Histórico completo</option>
+  </select>
+
+  <div id="blg-resultados-ensayos" class="lista-resultados" aria-live="polite"></div>
+</section>
+
+<!-- ═══ PANEL: OBRAS ════════════════════════════════════════════════════ -->
+<section id="panel-obras" class="panel" data-panel="obras" role="tabpanel" hidden>
+  <h2 class="seccion-titulo">Obras, libros clásicos y contemporáneos</h2>
+
+  <label for="periodo-obras" class="seccion-titulo">Período de tiempo</label>
+  <select id="periodo-obras" class="selector-periodo" data-periodo="obras" aria-label="Período de obras">
+    <option value="1" selected>Último año (365 días)</option>
+    <option value="2">Últimos 2 años</option>
+    <option value="3">Últimos 3 años</option>
+    <option value="4">Últimos 4 años</option>
+    <option value="5">Últimos 5 años</option>
+    <option value="historico">Histórico completo</option>
+  </select>
+
+  <div id="blg-resultados-obras" class="lista-resultados" aria-live="polite"></div>
+</section>
+</main>
+
+<!-- ═══ PIE ═══════════════════════════════════════════════════════════════ -->
+<footer class="version-footer">
+  Biblioteca Literaria Global · Versión <span id="blg-version">__VERSION__</span>
+</footer>
+
+<!-- ═══ MODAL: AUTORES ════════════════════════════════════════════════════ -->
+<div id="blg-modal-autores" hidden role="dialog" aria-modal="true" aria-labelledby="blg-modal-autores-titulo">
+  <div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <span id="blg-modal-autores-titulo" style="font-weight:700; font-size:1.1rem;">Autores</span>
+      <button data-cerrar-modal style="font-size:1.5rem; min-width:44px; min-height:44px; color:var(--color-texto-sec);" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="blg-modal-autores-body"></div>
+  </div>
+</div>
+
+<!-- ═══ DIALOG: AYUDA ════════════════════════════════════════════════════ -->
+<dialog id="blg-dialog-ayuda" aria-labelledby="ayuda-titulo">
+  <h2 id="ayuda-titulo">¿Cómo usar la Biblioteca Literaria Global?</h2>
+  <ul>
+    <li>Escriba el nombre de un <strong>autor</strong>, una <strong>obra</strong> o un <strong>tema literario</strong> en el buscador y presione <strong>Buscar</strong>.</li>
+    <li>También puede presionar un tema o autor en los botones de abajo para buscar directamente.</li>
+    <li>Use el <strong>selector de período</strong> para ampliar o reducir el rango de fechas de los resultados.</li>
+    <li>Las pestañas superiores le permiten ver <em>Novedades</em>, <em>Ensayos</em> y <em>Obras</em> de forma independiente.</li>
+    <li>Los botones <strong>A−</strong> y <strong>A+</strong> cambian el tamaño del texto para mayor comodidad.</li>
+    <li>Las tarjetas con borde <span style="color:var(--color-red)">rojo</span> corresponden a literatura peruana; las de borde <span style="color:var(--color-blue)">azul</span>, a literatura universal.</li>
+  </ul>
+  <p>No necesita instalar nada. Todos los datos provienen de fuentes de prestigio internacional.</p>
+  <button id="blg-cerrar-ayuda" class="btn-cerrar-dialog">Entendido</button>
+</dialog>
+
+<!-- ═══ SCRIPTS ══════════════════════════════════════════════════════════ -->
+<script src="datos/catalogo.js"></script>
+<script src="js/fuentes-prestigio.js"></script>
+<script src="js/temas.js"></script>
+<script src="js/autores.js"></script>
+<script src="js/motor-busqueda.js"></script>
+<script src="js/gutenberg.js"></script>
+<script src="js/crossref.js"></script>
+<script src="js/libros.js"></script>
+<script src="js/servicio-datos.js"></script>
+<script src="js/voz.js"></script>
+<script src="js/interfaz.js"></script>
+<script src="js/app.js"></script>
+
+<!-- Actualiza versión en pie -->
+<script>
+  (function(){
+    var el = document.getElementById('blg-version');
+    if (el && window.BLG_VERSION) el.textContent = window.BLG_VERSION;
+  })();
+</script>
+<!-- sr-only para lectores de pantalla -->
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}</style>
+</body>
+</html>
