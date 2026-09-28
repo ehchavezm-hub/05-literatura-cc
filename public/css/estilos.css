@@ -204,19 +204,6 @@ dialog::backdrop {
 }
 .btn-mas-panel:hover { color: var(--color-blue); border-color: var(--color-blue); }
 
-/* Botones de período */
-.periodo-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.btn-periodo {
-  height: 36px; padding: 0 16px; border-radius: 18px;
-  border: 1.5px solid var(--color-borde);
-  background: var(--color-card);
-  color: var(--color-texto-sec);
-  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
-  transition: background .15s, color .15s, border-color .15s;
-}
-.btn-periodo:hover:not(.btn-periodo-activo) { border-color: var(--color-blue); color: var(--color-blue); }
-.btn-periodo-activo { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
-
 /* Modal custom */
 #blg-modal-autores {
   position: fixed;

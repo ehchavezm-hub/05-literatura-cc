@@ -51,9 +51,23 @@
     .btn-buscar:hover { opacity: .85; }
     .btn-voz { width: 52px; height: 52px; border-radius: 14px; background: var(--color-card); border: 1.5px solid var(--color-borde); color: var(--color-blue); font-size: 1.3rem; display: flex; align-items: center; justify-content: center; }
 
-    /* Selector período */
-    .selector-periodo { height: 44px; border-radius: 10px; border: 1.5px solid var(--color-borde); background: var(--color-card); padding: 0 12px; font-size: 0.875rem; color: var(--color-texto); margin-bottom: 16px; }
-    .dark .selector-periodo { background: #2C2C2E; }
+    /* Botones de período */
+    .periodo-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .periodo-btns .btn-periodo {
+      height: 36px; min-height: 36px; min-width: unset;
+      padding: 0 16px; border-radius: 18px;
+      border: 1.5px solid var(--color-borde) !important;
+      background: var(--color-card) !important;
+      color: var(--color-texto-sec);
+      font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .periodo-btns .btn-periodo:hover { border-color: var(--color-blue) !important; color: var(--color-blue); }
+    .periodo-btns .btn-periodo.btn-periodo-activo {
+      background: var(--color-blue) !important;
+      color: #fff !important;
+      border-color: var(--color-blue) !important;
+    }
 
     /* Tarjetas de tema y autor */
     .grid-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px; }
