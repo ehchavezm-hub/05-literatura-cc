@@ -203,7 +203,13 @@ window.BLG_VERSION = '__VERSION__';
       ...(googleBooks.value || []),
     ];
 
-    todos = BLG_MotorBusqueda.filtrarPorFecha(todos, diasAtras);
+    // Los libros son atemporales: no filtrar por fecha. Solo filtrar noticias/ensayos.
+    const libros = todos.filter(i => i.tipo === 'libro' || i.tipo === 'clasico');
+    const otros = BLG_MotorBusqueda.filtrarPorFecha(
+      todos.filter(i => i.tipo !== 'libro' && i.tipo !== 'clasico'),
+      diasAtras
+    );
+    todos = [...otros, ...libros];
     todos = BLG_MotorBusqueda.rankear(todos, terminoPrincipal);
     todos = quitarDuplicados(todos);
 
@@ -215,16 +221,32 @@ window.BLG_VERSION = '__VERSION__';
     const contenedor = document.getElementById('blg-resultados-novedades');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
+    const periodo = obtenerPeriodo('novedades');
+    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
+
     const [semana, diarios] = await Promise.allSettled([
       BLG_ServicioDatos.cargarUltimaSemana(),
       BLG_ServicioDatos.cargarDiarios(),
     ]);
-    const todos = [
+    let todos = [
       ...(semana.value || []),
       ...(diarios.value || []),
     ];
-    const periodo = obtenerPeriodo('novedades');
-    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
+
+    // Fallback: cuando no hay datos pre-construidos, consultar fuentes en vivo
+    if (todos.length === 0) {
+      const [libros1, libros2, crossref] = await Promise.allSettled([
+        BLG_Libros.buscarGoogleBooks('literatura latinoamericana novela'),
+        BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
+        BLG_Crossref.buscar('critica literaria novela', diasAtras),
+      ]);
+      todos = [
+        ...(libros1.value || []),
+        ...(libros2.value || []),
+        ...(crossref.value || []),
+      ];
+    }
+
     const filtrados = BLG_MotorBusqueda.filtrarPorFecha(todos, diasAtras);
     BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No hay novedades recientes.');
     contenedor.dataset.cargado = '1';
@@ -235,16 +257,16 @@ window.BLG_VERSION = '__VERSION__';
     const contenedor = document.getElementById('blg-resultados-ensayos');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
+    const periodo = obtenerPeriodo('ensayos');
+    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
     const [crossref, archivo] = await Promise.allSettled([
-      BLG_Crossref.buscar('critica literaria latinoamerica'),
+      BLG_Crossref.buscar('critica literaria latinoamerica', diasAtras),
       BLG_ServicioDatos.cargarArchivo(),
     ]);
     const ensayos = [
       ...(crossref.value || []),
       ...(archivo.value || []).filter(i => i.tipo === 'ensayo'),
     ];
-    const periodo = obtenerPeriodo('ensayos');
-    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
     const filtrados = BLG_MotorBusqueda.filtrarPorFecha(ensayos, diasAtras);
     BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No se encontraron ensayos.');
     contenedor.dataset.cargado = '1';

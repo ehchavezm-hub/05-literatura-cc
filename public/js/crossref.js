@@ -4,10 +4,13 @@
 })(typeof self !== 'undefined' ? self : this, function () {
 
   async function buscar(termino, diasAtras = 365) {
-    const desde = new Date();
-    desde.setDate(desde.getDate() - diasAtras);
-    const fechaDesde = desde.toISOString().split('T')[0];
-    const url = `https://api.crossref.org/works?query=${encodeURIComponent(termino)}&filter=from-pub-date:${fechaDesde}&rows=15&select=DOI,title,author,published,container-title,URL`;
+    let filtroFecha = '';
+    if (isFinite(diasAtras)) {
+      const desde = new Date();
+      desde.setDate(desde.getDate() - diasAtras);
+      filtroFecha = `&filter=from-pub-date:${desde.toISOString().split('T')[0]}`;
+    }
+    const url = `https://api.crossref.org/works?query=${encodeURIComponent(termino)}${filtroFecha}&rows=15&select=DOI,title,author,published,container-title,URL`;
     try {
       const resp = await fetch(url);
       const datos = await resp.json();
