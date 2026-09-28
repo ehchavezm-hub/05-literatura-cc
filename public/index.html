@@ -78,23 +78,83 @@
     .btn-autor:hover { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
     .btn-mas-autores { min-height: 44px; padding: 6px 14px; border-radius: 10px; border: 1.5px dashed var(--color-borde); background: transparent; color: var(--color-texto-sec); font-size: 0.875rem; }
 
-    /* Resultados */
+    /* ── Tarjeta de resultado v2 ─────────────────────────────────────────── */
     .lista-resultados { display: grid; gap: 12px; }
-    .tarjeta { background: var(--color-card); border-radius: 14px; border: 1px solid var(--color-borde); border-left: 4px solid var(--color-blue); padding: 14px 16px; transition: box-shadow .15s; }
-    .tarjeta:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .tarjeta-inner { display: flex; gap: 12px; }
-    .tarjeta-icono { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-    .tarjeta-titulo { font-weight: 600; color: var(--color-texto); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .tarjeta-titulo:hover { color: var(--color-blue); }
-    .tarjeta-autores { font-size: 0.85rem; color: var(--color-texto-sec); margin-top: 4px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    .tarjeta-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
-    .badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 100px; font-weight: 600; }
-    .badge-nacional { background: #FFE5E5; color: #C0392B; }
-    .dark .badge-nacional { background: #4A1515; color: #FF6B6B; }
-    .badge-libre { background: #E5F9ED; color: #1A7A3C; }
-    .dark .badge-libre { background: #0D3D20; color: #4ADE80; }
-    .tarjeta-fuente { font-size: 0.75rem; color: var(--color-texto-sec); }
-    .tarjeta-fecha { font-size: 0.75rem; color: var(--color-texto-sec); }
+
+    /* Colores de acento izquierdo */
+    .border-l-blg-red    { border-left-color: var(--color-red)    !important; }
+    .border-l-blg-blue   { border-left-color: var(--color-blue)   !important; }
+    .border-l-blg-purple { border-left-color: var(--color-purple) !important; }
+    .border-l-blg-green  { border-left-color: var(--color-green)  !important; }
+    .border-l-blg-orange { border-left-color: var(--color-orange) !important; }
+
+    /* Card */
+    .tarjeta-v2 {
+      background: var(--color-card);
+      border: 1px solid var(--color-borde);
+      border-left: 4px solid var(--color-blue);
+      border-radius: 14px;
+      padding: 16px 18px;
+      transition: box-shadow .15s;
+    }
+    .tarjeta-v2:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .tarjeta-v2-inner   { display: flex; gap: 16px; align-items: flex-start; }
+    .tarjeta-v2-left    { flex: 1; min-width: 0; }
+    .tarjeta-v2-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+
+    /* Badges */
+    .tarjeta-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .badge-v2 {
+      display: inline-flex; align-items: center; gap: 4px;
+      height: 26px; padding: 0 10px;
+      border-radius: 13px; border: 1.5px solid currentColor;
+      font-size: 0.72rem; font-weight: 600; white-space: nowrap;
+      background: transparent;
+    }
+    .badge-tipo-noticia { color: var(--color-orange); }
+    .badge-tipo-resena  { color: var(--color-red); }
+    .badge-tipo-ensayo  { color: var(--color-blue); }
+    .badge-tipo-libro   { color: var(--color-green); }
+    .badge-tipo-clasico { color: var(--color-purple); }
+    .badge-tipo-default { color: var(--color-blue); }
+    .badge-fecha-rel    { color: var(--color-orange); }
+    .badge-tema         { color: var(--color-blue); }
+    .badge-nacional     { color: var(--color-red); }
+
+    /* Contenido */
+    .tarjeta-v2-titulo {
+      font-weight: 700; font-size: 0.97rem; line-height: 1.4;
+      color: var(--color-texto); margin-bottom: 6px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .tarjeta-v2-desc {
+      font-size: 0.875rem; color: var(--color-texto); line-height: 1.55;
+      margin-bottom: 10px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .tarjeta-v2-meta { display: flex; flex-direction: column; gap: 3px; }
+    .tarjeta-v2-meta-fila { font-size: 0.775rem; color: var(--color-texto-sec); }
+    .tarjeta-v2-meta-fila strong { font-weight: 600; }
+    .tarjeta-v2-fuente-link { color: var(--color-blue); text-decoration: none; }
+    .tarjeta-v2-fuente-link:hover { text-decoration: underline; }
+
+    /* Botones de acción */
+    .btn-visitar, .btn-whatsapp {
+      display: inline-flex !important; align-items: center; gap: 6px;
+      height: 38px; min-height: 38px; min-width: unset;
+      padding: 0 14px; border-radius: 10px;
+      font-size: 0.8rem; font-weight: 700; white-space: nowrap;
+      text-decoration: none; transition: opacity .15s;
+      border: none !important;
+    }
+    .btn-visitar  { background: #1C3A5E !important; color: #fff !important; }
+    .btn-whatsapp { background: #128C7E !important; color: #fff !important; }
+    .btn-visitar:hover, .btn-whatsapp:hover { opacity: .85; }
+
+    @media (max-width: 560px) {
+      .tarjeta-v2-inner   { flex-direction: column; }
+      .tarjeta-v2-actions { flex-direction: row; flex-wrap: wrap; }
+    }
 
     /* Cargando */
     .cargando { display: flex; justify-content: center; align-items: center; padding: 64px 16px; gap: 12px; color: var(--color-texto-sec); }
