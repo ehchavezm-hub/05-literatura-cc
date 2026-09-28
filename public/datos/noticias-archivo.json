@@ -1,1 +1,594 @@
-[]
+[
+  {
+    "titulo": "‘Rubber Soul’, de los Beatles: el disco que hizo de la música pop una forma de arte",
+    "url": "https://elpais.com/babelia/2026-09-28/rubber-soul-de-los-beatles-el-disco-que-hizo-de-la-musica-pop-una-forma-de-arte.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Alberto Muñagorri: vida y vértigo del niño de la bomba",
+    "url": "https://elpais.com/babelia/2026-09-26/alberto-munagorri-vida-y-vertigo-del-nino-de-la-bomba.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Los seis libros de la semana",
+    "url": "https://elpais.com/babelia/2026-09-26/los-seis-libros-de-la-semana.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Por los pasadizos del arte: la utopía domesticada de la Bienal de Lyon",
+    "url": "https://elpais.com/babelia/2026-09-26/por-los-pasadizos-del-arte-la-utopia-domesticada-de-la-bienal-de-lyon.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Neil Young: 50 discos después, todavía guarda otra canción de amor",
+    "url": "https://elpais.com/babelia/2026-09-26/neil-young-50-discos-despues-todavia-guarda-otra-cancion-de-amor.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "El nuevo disco de Jim James es una auténtica catedral musical",
+    "url": "https://elpais.com/babelia/2026-09-26/el-nuevo-disco-de-jim-james-es-una-autentica-catedral-musical.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Los mejores libros infantiles y juveniles de septiembre 2026",
+    "url": "https://elpais.com/babelia/2026-09-26/los-mejores-libros-infantiles-y-juveniles-de-septiembre-2026.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Un genio del Mal llamado Sánchez",
+    "url": "https://elpais.com/babelia/2026-09-26/un-genio-del-mal-llamado-sanchez.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Trampantojo: La resaca de las vanguardias produce ‘popstruos’",
+    "url": "https://elpais.com/babelia/2026-09-26/trampantojo-la-resaca-de-las-vanguardias-produce-popstruos.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "‘La ópera de los tres centavos’: Brecht y el arte que rima con la realidad",
+    "url": "https://elpais.com/babelia/2026-09-25/la-opera-de-los-tres-centavos-brecht-y-el-arte-que-rima-con-la-realidad.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Los estrenos de teatro y danza de la semana",
+    "url": "https://elpais.com/babelia/2026-09-25/los-estrenos-de-teatro-y-danza-de-la-semana.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Guía cultural de otoño de 2026: la mejor selección para leer, ver, escuchar y disfrutar",
+    "url": "https://elpais.com/babelia/2026-09-05/guia-cultural-de-otono-de-2026-la-mejor-seleccion-para-leer-ver-escuchar-y-disfrutar.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-05"
+  },
+  {
+    "titulo": "Empieza la temporada de música clásica y ópera: cambios en el horizonte",
+    "url": "https://elpais.com/babelia/2026-09-01/empieza-la-temporada-de-musica-clasica-y-opera-cambios-en-el-horizonte.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-01"
+  },
+  {
+    "titulo": "Muertes cercanas, amputaciones y otros traumas: no ficción literaria para salvar la vida",
+    "url": "https://elpais.com/babelia/2026-09-01/muertes-cercanas-amputaciones-y-otros-traumas-no-ficcion-literaria-para-salvar-la-vida.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-01"
+  },
+  {
+    "titulo": "Los ‘Diarios’ de Sergio Pitol: un lugar entre lo cotidiano y lo fabuloso",
+    "url": "https://elpais.com/babelia/2026-09-25/los-diarios-de-sergio-pitol-un-lugar-entre-lo-cotidiano-y-lo-fabuloso.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "‘Glifo’, de Ali Smith: Gaza infiltrada",
+    "url": "https://elpais.com/babelia/2026-09-21/glifo-de-ali-smith-gaza-infiltrada.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-21"
+  },
+  {
+    "titulo": "De nuevo el cuerpo de Lena Dunham: ya no se puede leer ‘Famesick’ de la misma manera",
+    "url": "https://elpais.com/babelia/2026-09-23/famesick-de-lena-dunham-el-artefacto-narcisista-definitivo.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Lola Pons traza una cartografía lingüística del silencio con gracia y rigor",
+    "url": "https://elpais.com/babelia/2026-09-24/lola-pons-traza-una-cartografia-linguistica-del-silencio-con-gracia-y-rigor.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Ausencia y exceso de la coma",
+    "url": "https://elpais.com/babelia/2026-09-23/ausencia-y-exceso-de-la-coma.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Háganos soñar",
+    "url": "https://elpais.com/babelia/2026-09-19/haganos-sonar.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-19"
+  },
+  {
+    "titulo": "“No tiene conexión”",
+    "url": "https://elpais.com/babelia/2026-09-16/no-tiene-conexion.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-16"
+  },
+  {
+    "titulo": "Carlos Hipólito: “No creo que exista ningún placer culpable. El placer siempre es bueno”",
+    "url": "https://elpais.com/babelia/2026-09-22/carlos-hipolito-no-creo-que-exista-ningun-placer-culpable-el-placer-siempre-es-bueno.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Alejandro Gándara: “El miedo suele ser más fuerte que nosotros. Y es una forma de control social”",
+    "url": "https://elpais.com/babelia/2026-09-15/alejandro-gandara-el-miedo-suele-ser-mas-fuerte-que-nosotros-y-es-una-forma-de-control-social.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-15"
+  },
+  {
+    "titulo": "Nacho Guerreros: “Me hubiese gustado ser un sabio, llegar a construir algo valioso”",
+    "url": "https://elpais.com/babelia/2026-09-12/nacho-guerreros-me-hubiese-gustado-ser-un-sabio-llegar-a-construir-algo-valioso.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-12"
+  },
+  {
+    "titulo": "Raquel Lanseros: “Me dijeron, con esa inteligencia, ¿cómo se te ocurre dedicarte a la poesía?”",
+    "url": "https://elpais.com/babelia/2026-09-01/raquel-lanseros-me-dijeron-con-esa-inteligencia-como-se-te-ocurre-dedicarte-a-la-poesia.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-01"
+  },
+  {
+    "titulo": "Margarita García Robayo: “Nunca aceptaría un trabajo en el que tuviera que simular amabilidad a diario”",
+    "url": "https://elpais.com/babelia/2026-08-25/margarita-garcia-robayo-nunca-aceptaria-un-trabajo-en-el-que-tuviera-que-simular-amabilidad-a-diario.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-08-25"
+  },
+  {
+    "titulo": "Range by Dorthe Nors review – an astrophysicist at odds with reality",
+    "url": "https://www.theguardian.com/books/2026/sep/28/range-by-dorthe-nors-review-an-astrophysicist-at-odds-with-reality",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Deep into the Sixties: Britain 1965-66 by David Kynaston review – a tour de force of popular history",
+    "url": "https://www.theguardian.com/books/2026/sep/28/deep-into-the-sixties-britain-1965-66-by-david-kynaston-review-beatles-bigots-and-streets-in-the-sky",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Tomi Adeyemi on the film of her hit novel Children of Blood and Bone: ‘I don’t plan to watch it’",
+    "url": "https://www.theguardian.com/books/2026/sep/27/tomi-adeyemi-on-the-film-of-her-hit-novel-children-of-blood-and-bone-i-dont-plan-to-watch-it",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "Does avoiding misery make you happy?",
+    "url": "https://www.theguardian.com/books/2026/sep/27/does-avoiding-misery-make-you-happy",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "‘We left Ireland because there wasn’t work – and we wanted to get the hell away’: Trespasses author Louise Kennedy",
+    "url": "https://www.theguardian.com/books/2026/sep/26/we-left-ireland-because-there-wasnt-work-and-we-wanted-to-get-the-hell-away-trespasses-author-louise-kennedy",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Tom Gauld on the author simulator – cartoon",
+    "url": "https://www.theguardian.com/books/picture/2026/sep/27/tom-gauld-on-the-author-simulator-cartoon",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "‘My generation of novelists is dying’: Rose Tremain on 70 years of writing, and late-life inspiration",
+    "url": "https://www.theguardian.com/books/2026/sep/25/my-generation-of-novelists-is-dying-rose-tremain-on-70-years-of-writing-and-late-life-inspiration",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "The 100 best novels of all time",
+    "url": "https://www.theguardian.com/books/ng-interactive/2026/may/12/the-100-best-novels-of-all-time",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-05-16"
+  },
+  {
+    "titulo": "The best books to read in September: new paperbacks from Margaret Atwood, Kiran Desai and Richard Holmes",
+    "url": "https://www.theguardian.com/books/ng-interactive/2026/sep/18/the-best-books-to-read-in-september-new-paperbacks-from-margaret-atwood-kiran-desai-and-richard-holmes",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-18"
+  },
+  {
+    "titulo": "What we’re reading: Irvine Welsh, Janice Hallett and Guardian readers on the books they enjoyed in August",
+    "url": "https://www.theguardian.com/books/2026/sep/03/what-were-reading-irvine-welsh-janice-hallett-and-guardian-readers-on-the-books-they-enjoyed-in-august",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-03"
+  },
+  {
+    "titulo": "Britain’s Slave Traders by William A Pettigrew review – the inconvenient truth",
+    "url": "https://www.theguardian.com/books/2026/sep/23/britains-slave-traders-by-william-a-pettigrew-review-the-inconvenient-truth",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Swan Song by Charles Spencer review – a furious exercise in score-settling by Diana’s brother",
+    "url": "https://www.theguardian.com/books/2026/sep/22/swan-song-charles-spencer-review-diana-princess-of-wales-brother-earl",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Autumn by Kate Mosse review – tender reflections on time and place",
+    "url": "https://www.theguardian.com/books/2026/sep/22/autumn-by-kate-mosse-review-tender-reflections-on-time-and-place",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "The American Way of Killing by Malcolm Gladwell review – wide of the mark",
+    "url": "https://www.theguardian.com/books/2026/sep/21/the-american-way-of-killing-by-malcolm-gladwell-review-wide-of-the-mark",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-21"
+  },
+  {
+    "titulo": "Exit Party by Emily St John Mandel review – alternate visions of post-crisis America",
+    "url": "https://www.theguardian.com/books/2026/sep/24/exit-party-by-emily-st-john-mandel-review-alternate-visions-of-post-crisis-america",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "The Complex by Karan Mahajan review – a superb family saga set in Delhi",
+    "url": "https://www.theguardian.com/books/2026/sep/23/the-complex-by-karan-mahajan-review-a-superb-family-saga-set-in-delhi",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Doom Painting by AK Blakemore review – a dazzling epic of the Peasants’ Revolt",
+    "url": "https://www.theguardian.com/books/2026/sep/22/doom-painting-by-ak-blakemore-review-a-dazzling-epic-of-the-peasants-revolt",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "The Recovery House by Derek Owusu review – a uniquely honest view of mental health",
+    "url": "https://www.theguardian.com/books/2026/sep/21/the-recovery-house-by-derek-owusu-review-a-uniquely-honest-view-of-mental-health",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-21"
+  },
+  {
+    "titulo": "Children’s and teens roundup – the best new picture books and novels",
+    "url": "https://www.theguardian.com/books/2026/sep/18/childrens-and-teens-roundup-the-best-new-picture-books-and-novels",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-18"
+  },
+  {
+    "titulo": "Children’s books roundup – the best new picture books and novels",
+    "url": "https://www.theguardian.com/books/2026/aug/28/childrens-books-roundup-the-best-new-picture-books-and-novels",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-08-28"
+  },
+  {
+    "titulo": "Children and teens roundup – the best new picture books and novels",
+    "url": "https://www.theguardian.com/books/2026/jun/26/children-and-teens-roundup-the-best-new-picture-books-and-novels",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-06-26"
+  },
+  {
+    "titulo": "Children and teens roundup – the best new picture books and novels",
+    "url": "https://www.theguardian.com/books/2026/may/22/children-and-teens-roundup-the-best-new-picture-books-and-novels",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-05-22"
+  },
+  {
+    "titulo": "Jonathan Franzen: ‘It’s still mysterious to me that I was angry for so long’",
+    "url": "https://www.theguardian.com/books/2026/sep/19/jonathan-franzen-its-still-mysterious-to-me-that-i-was-angry-for-so-long",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-19"
+  },
+  {
+    "titulo": "Emily St John Mandel: ‘When half the electorate disagrees on basic reality, how do you come back from that?’",
+    "url": "https://www.theguardian.com/books/2026/sep/13/emily-st-john-mandel-when-half-the-electorate-disagrees-on-basic-reality-how-do-you-come-back-from-that",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-13"
+  },
+  {
+    "titulo": "Julia Donaldson: ‘Am I the Gruffalo Granny? Not really. I’m the mouse’",
+    "url": "https://www.theguardian.com/books/2026/sep/12/julia-donaldson-am-i-the-gruffalo-granny-not-really-im-the-mouse",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-12"
+  },
+  {
+    "titulo": "Kevin Powers: ‘I was ready to abandon Infinite Jest a thousand times’",
+    "url": "https://www.theguardian.com/books/2026/sep/04/kevin-powers-i-was-ready-to-abandon-infinite-jest-a-thousand-times",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-04"
+  },
+  {
+    "titulo": "Yellow Dog by Martin Amis review – Bill Nighy has a ball",
+    "url": "https://www.theguardian.com/books/2026/sep/24/yellow-dog-by-martin-amis-review-bill-nighy-has-a-ball",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "‘She made Mondays something to look forward to’: readers pay tribute to Carol Rumens, Guardian’s Poem of the week columnist",
+    "url": "https://www.theguardian.com/books/2026/may/08/readers-tribute-to-carol-rumens-poem-of-the-week-columnist",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-05-08"
+  },
+  {
+    "titulo": "Cruje el Maximato",
+    "url": "https://letraslibres.com/politica/cruje-el-maximato/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "“Hombre al agua” y lo que el cine permite preguntar &#124; Gael García Bernal",
+    "url": "https://letraslibres.com/entrevistas/hombre-al-agua-y-lo-que-el-cine-permite-preguntar-gael-garcia-bernal/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Viva la acampada aunque pierda",
+    "url": "https://letraslibres.com/politica/viva-la-acampada-aunque-pierda/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Escuchar al adversario",
+    "url": "https://letraslibres.com/cultura/escuchar-al-adversario/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Los viajes en el espacio son viajes en el tiempo",
+    "url": "https://letraslibres.com/literatura/los-viajes-en-el-espacio-son-viajes-en-el-tiempo/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Cuando escribe la viuda de un poeta",
+    "url": "https://letraslibres.com/libros/cuando-escribe-la-viuda-de-un-poeta/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Prometeo redimido",
+    "url": "https://letraslibres.com/literatura/prometeo-redimido/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "De jóvenes airados a apóstoles del perdón",
+    "url": "https://letraslibres.com/cine-tv/de-jovenes-airados-a-apostoles-del-perdon/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Vida y milagros del increíble Chicho",
+    "url": "https://letraslibres.com/cine-tv/vida-y-milagros-del-increible-chicho/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "El discurso de la IA: mercaderes del apocalipsis",
+    "url": "https://letraslibres.com/politica/el-discurso-de-la-ia-mercaderes-del-apocalipsis/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "&#8220;Susurran tu nombre&#8221;, un thriller que mira al abismo",
+    "url": "https://letraslibres.com/cine-tv/susurran-tu-nombre-un-thriller-que-mira-al-abismo/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Hay una manera fácil de gobernar",
+    "url": "https://letraslibres.com/politica/hay-una-manera-facil-de-gobernar/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Toronto 2026: encrucijadas",
+    "url": "https://letraslibres.com/cine-tv/toronto-2026-encrucijadas/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "El arte del desvío",
+    "url": "https://letraslibres.com/libros/el-arte-del-desvio/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Casa Rorty LXXII: Superioridad de la literatura sobre el cine o viceversa",
+    "url": "https://letraslibres.com/cine-tv/casa-rorty-lxxii-superioridad-de-la-literatura-sobre-el-cine-o-viceversa/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "El cosmos inagotable de John Coltrane",
+    "url": "https://letraslibres.com/musica/el-cosmos-inagotable-de-john-coltrane/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Ariana Harwicz o los límites de la discrepancia",
+    "url": "https://letraslibres.com/cultura/ariana-harwicz-o-los-limites-de-la-discrepancia/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "¿Qué hacer después de PISA? Las reformas pendientes",
+    "url": "https://letraslibres.com/politica/que-hacer-despues-de-pisa-las-reformas-pendientes/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "La fatiga de la indignación",
+    "url": "https://letraslibres.com/politica/la-fatiga-de-la-indignacion/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "La humanidad de Agustín",
+    "url": "https://letraslibres.com/revista/la-humanidad-de-agustin/01/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  }
+]

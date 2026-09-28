@@ -1,1 +1,582 @@
-[]
+[
+  {
+    "titulo": "‘Rubber Soul’, de los Beatles: el disco que hizo de la música pop una forma de arte",
+    "url": "https://elpais.com/babelia/2026-09-28/rubber-soul-de-los-beatles-el-disco-que-hizo-de-la-musica-pop-una-forma-de-arte.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Alberto Muñagorri: vida y vértigo del niño de la bomba",
+    "url": "https://elpais.com/babelia/2026-09-26/alberto-munagorri-vida-y-vertigo-del-nino-de-la-bomba.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Los seis libros de la semana",
+    "url": "https://elpais.com/babelia/2026-09-26/los-seis-libros-de-la-semana.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Por los pasadizos del arte: la utopía domesticada de la Bienal de Lyon",
+    "url": "https://elpais.com/babelia/2026-09-26/por-los-pasadizos-del-arte-la-utopia-domesticada-de-la-bienal-de-lyon.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Neil Young: 50 discos después, todavía guarda otra canción de amor",
+    "url": "https://elpais.com/babelia/2026-09-26/neil-young-50-discos-despues-todavia-guarda-otra-cancion-de-amor.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "El nuevo disco de Jim James es una auténtica catedral musical",
+    "url": "https://elpais.com/babelia/2026-09-26/el-nuevo-disco-de-jim-james-es-una-autentica-catedral-musical.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Los mejores libros infantiles y juveniles de septiembre 2026",
+    "url": "https://elpais.com/babelia/2026-09-26/los-mejores-libros-infantiles-y-juveniles-de-septiembre-2026.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Un genio del Mal llamado Sánchez",
+    "url": "https://elpais.com/babelia/2026-09-26/un-genio-del-mal-llamado-sanchez.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Trampantojo: La resaca de las vanguardias produce ‘popstruos’",
+    "url": "https://elpais.com/babelia/2026-09-26/trampantojo-la-resaca-de-las-vanguardias-produce-popstruos.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "‘La ópera de los tres centavos’: Brecht y el arte que rima con la realidad",
+    "url": "https://elpais.com/babelia/2026-09-25/la-opera-de-los-tres-centavos-brecht-y-el-arte-que-rima-con-la-realidad.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Los estrenos de teatro y danza de la semana",
+    "url": "https://elpais.com/babelia/2026-09-25/los-estrenos-de-teatro-y-danza-de-la-semana.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Los ‘Diarios’ de Sergio Pitol: un lugar entre lo cotidiano y lo fabuloso",
+    "url": "https://elpais.com/babelia/2026-09-25/los-diarios-de-sergio-pitol-un-lugar-entre-lo-cotidiano-y-lo-fabuloso.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "De nuevo el cuerpo de Lena Dunham: ya no se puede leer ‘Famesick’ de la misma manera",
+    "url": "https://elpais.com/babelia/2026-09-23/famesick-de-lena-dunham-el-artefacto-narcisista-definitivo.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Lola Pons traza una cartografía lingüística del silencio con gracia y rigor",
+    "url": "https://elpais.com/babelia/2026-09-24/lola-pons-traza-una-cartografia-linguistica-del-silencio-con-gracia-y-rigor.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Ausencia y exceso de la coma",
+    "url": "https://elpais.com/babelia/2026-09-23/ausencia-y-exceso-de-la-coma.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Carlos Hipólito: “No creo que exista ningún placer culpable. El placer siempre es bueno”",
+    "url": "https://elpais.com/babelia/2026-09-22/carlos-hipolito-no-creo-que-exista-ningun-placer-culpable-el-placer-siempre-es-bueno.html",
+    "fuente": "Babelia – El País",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Range by Dorthe Nors review – an astrophysicist at odds with reality",
+    "url": "https://www.theguardian.com/books/2026/sep/28/range-by-dorthe-nors-review-an-astrophysicist-at-odds-with-reality",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Deep into the Sixties: Britain 1965-66 by David Kynaston review – a tour de force of popular history",
+    "url": "https://www.theguardian.com/books/2026/sep/28/deep-into-the-sixties-britain-1965-66-by-david-kynaston-review-beatles-bigots-and-streets-in-the-sky",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Tomi Adeyemi on the film of her hit novel Children of Blood and Bone: ‘I don’t plan to watch it’",
+    "url": "https://www.theguardian.com/books/2026/sep/27/tomi-adeyemi-on-the-film-of-her-hit-novel-children-of-blood-and-bone-i-dont-plan-to-watch-it",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "Does avoiding misery make you happy?",
+    "url": "https://www.theguardian.com/books/2026/sep/27/does-avoiding-misery-make-you-happy",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "‘We left Ireland because there wasn’t work – and we wanted to get the hell away’: Trespasses author Louise Kennedy",
+    "url": "https://www.theguardian.com/books/2026/sep/26/we-left-ireland-because-there-wasnt-work-and-we-wanted-to-get-the-hell-away-trespasses-author-louise-kennedy",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-26"
+  },
+  {
+    "titulo": "Tom Gauld on the author simulator – cartoon",
+    "url": "https://www.theguardian.com/books/picture/2026/sep/27/tom-gauld-on-the-author-simulator-cartoon",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-27"
+  },
+  {
+    "titulo": "‘My generation of novelists is dying’: Rose Tremain on 70 years of writing, and late-life inspiration",
+    "url": "https://www.theguardian.com/books/2026/sep/25/my-generation-of-novelists-is-dying-rose-tremain-on-70-years-of-writing-and-late-life-inspiration",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Britain’s Slave Traders by William A Pettigrew review – the inconvenient truth",
+    "url": "https://www.theguardian.com/books/2026/sep/23/britains-slave-traders-by-william-a-pettigrew-review-the-inconvenient-truth",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Swan Song by Charles Spencer review – a furious exercise in score-settling by Diana’s brother",
+    "url": "https://www.theguardian.com/books/2026/sep/22/swan-song-charles-spencer-review-diana-princess-of-wales-brother-earl",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Autumn by Kate Mosse review – tender reflections on time and place",
+    "url": "https://www.theguardian.com/books/2026/sep/22/autumn-by-kate-mosse-review-tender-reflections-on-time-and-place",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Exit Party by Emily St John Mandel review – alternate visions of post-crisis America",
+    "url": "https://www.theguardian.com/books/2026/sep/24/exit-party-by-emily-st-john-mandel-review-alternate-visions-of-post-crisis-america",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "The Complex by Karan Mahajan review – a superb family saga set in Delhi",
+    "url": "https://www.theguardian.com/books/2026/sep/23/the-complex-by-karan-mahajan-review-a-superb-family-saga-set-in-delhi",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Doom Painting by AK Blakemore review – a dazzling epic of the Peasants’ Revolt",
+    "url": "https://www.theguardian.com/books/2026/sep/22/doom-painting-by-ak-blakemore-review-a-dazzling-epic-of-the-peasants-revolt",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-22"
+  },
+  {
+    "titulo": "Yellow Dog by Martin Amis review – Bill Nighy has a ball",
+    "url": "https://www.theguardian.com/books/2026/sep/24/yellow-dog-by-martin-amis-review-bill-nighy-has-a-ball",
+    "fuente": "The Guardian Books",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Cruje el Maximato",
+    "url": "https://letraslibres.com/politica/cruje-el-maximato/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "“Hombre al agua” y lo que el cine permite preguntar &#124; Gael García Bernal",
+    "url": "https://letraslibres.com/entrevistas/hombre-al-agua-y-lo-que-el-cine-permite-preguntar-gael-garcia-bernal/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Viva la acampada aunque pierda",
+    "url": "https://letraslibres.com/politica/viva-la-acampada-aunque-pierda/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Escuchar al adversario",
+    "url": "https://letraslibres.com/cultura/escuchar-al-adversario/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Los viajes en el espacio son viajes en el tiempo",
+    "url": "https://letraslibres.com/literatura/los-viajes-en-el-espacio-son-viajes-en-el-tiempo/28/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-28"
+  },
+  {
+    "titulo": "Cuando escribe la viuda de un poeta",
+    "url": "https://letraslibres.com/libros/cuando-escribe-la-viuda-de-un-poeta/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Prometeo redimido",
+    "url": "https://letraslibres.com/literatura/prometeo-redimido/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "De jóvenes airados a apóstoles del perdón",
+    "url": "https://letraslibres.com/cine-tv/de-jovenes-airados-a-apostoles-del-perdon/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "Vida y milagros del increíble Chicho",
+    "url": "https://letraslibres.com/cine-tv/vida-y-milagros-del-increible-chicho/25/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-25"
+  },
+  {
+    "titulo": "El discurso de la IA: mercaderes del apocalipsis",
+    "url": "https://letraslibres.com/politica/el-discurso-de-la-ia-mercaderes-del-apocalipsis/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "&#8220;Susurran tu nombre&#8221;, un thriller que mira al abismo",
+    "url": "https://letraslibres.com/cine-tv/susurran-tu-nombre-un-thriller-que-mira-al-abismo/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Hay una manera fácil de gobernar",
+    "url": "https://letraslibres.com/politica/hay-una-manera-facil-de-gobernar/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Toronto 2026: encrucijadas",
+    "url": "https://letraslibres.com/cine-tv/toronto-2026-encrucijadas/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "El arte del desvío",
+    "url": "https://letraslibres.com/libros/el-arte-del-desvio/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "Casa Rorty LXXII: Superioridad de la literatura sobre el cine o viceversa",
+    "url": "https://letraslibres.com/cine-tv/casa-rorty-lxxii-superioridad-de-la-literatura-sobre-el-cine-o-viceversa/24/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-24"
+  },
+  {
+    "titulo": "El cosmos inagotable de John Coltrane",
+    "url": "https://letraslibres.com/musica/el-cosmos-inagotable-de-john-coltrane/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Ariana Harwicz o los límites de la discrepancia",
+    "url": "https://letraslibres.com/cultura/ariana-harwicz-o-los-limites-de-la-discrepancia/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "¿Qué hacer después de PISA? Las reformas pendientes",
+    "url": "https://letraslibres.com/politica/que-hacer-despues-de-pisa-las-reformas-pendientes/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "La fatiga de la indignación",
+    "url": "https://letraslibres.com/politica/la-fatiga-de-la-indignacion/23/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "La humanidad de Agustín",
+    "url": "https://letraslibres.com/revista/la-humanidad-de-agustin/01/09/2026/",
+    "fuente": "Letras Libres",
+    "tipo": "noticia",
+    "ambito": "internacional",
+    "fecha": "2026-09-23"
+  },
+  {
+    "titulo": "Índice",
+    "autores": "",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-toc",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Frontmatter",
+    "autores": "",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-fm",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "“Revelar”",
+    "autores": "Giovanna Rivero",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-021",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Sobre los autores",
+    "autores": "",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-025",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "“Supay”",
+    "autores": "Solange Rodríguez Pappe",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-023",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "“Invitación”",
+    "autores": "Rosalba Campra",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-024",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Morir y vivir en tiempos interesantes: gestaciones posthumanas y engendros monstruosos en la literatura de Solange Rodríguez Pappe",
+    "autores": "Claudia Elisa Marzaro",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-016",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "“Sobre las aguavivas y los grandes antiguos”",
+    "autores": "Ramiro Sanchiz",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-022",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Recoger la soledad. “Hermano ciervo” de Giovanna Rivero",
+    "autores": "Emanuela Jossa",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-014",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Fantasmas del castillo globalizado: el horror de Mariana Enriquez",
+    "autores": "Andrea Pezzè",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-010",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Fragmentos para Ustedes brillan en lo oscuro de Liliana Colanzi",
+    "autores": "Fernando Moreno",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-015",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Extrañamiento y archivo en Las constelaciones oscuras de Pola Oloixarac",
+    "autores": "Macarena Areco",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-006",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Adolescencia y psicosis: el fantástico de la forclusión en Mariana Enriquez",
+    "autores": "Alexander Torres",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-012",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Introducción. Astronaves en la cordillera, tentáculos en la selva",
+    "autores": "Gabriele Bizzarri, Francesco Fasano",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-001",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "De límites inciertos: ¿lo fantástico? en dos cuentos de Solange Rodríguez Pappe",
+    "autores": "Margherita Cannavacciuolo",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-011",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Samanta Schweblin y Fernanda Trías: poéticas afectivas en torno al ecocidio",
+    "autores": "Olivia Vázquez-Medina",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-013",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "El tramo o el instante. Coloquio con Giovanna Rivero",
+    "autores": "Rosalba Campra, Gabriele Bizzarri, Francesco Fasano",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-018",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Ese pulpo en la selva. Coloquio con Liliana Colanzi",
+    "autores": "Rosalba Campra, Gabriele Bizzarri, Francesco Fasano",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-020",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Futuros perdidos y planetas extraños. Especulaciones posthumanas en “Nuestro mundo muerto” de Liliana Colanzi",
+    "autores": "Giulio Musso",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-003",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  },
+  {
+    "titulo": "Fantasmas sin justicia. La Guerra de Malvinas en Trasfondo, de Patricia Ratto",
+    "autores": "Juan Pablo Dabove",
+    "revista": "Astronaves en la cordillera, tentáculos en la selva",
+    "url": "https://doi.org/10.31819/9783968698830-009",
+    "fuente": "Crossref",
+    "tipo": "ensayo",
+    "fecha": "2026"
+  }
+]
