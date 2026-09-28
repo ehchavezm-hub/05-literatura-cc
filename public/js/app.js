@@ -283,14 +283,35 @@ window.BLG_VERSION = '__VERSION__';
     const contenedor = document.getElementById('blg-resultados-obras');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
-    const [libros, clasicos] = await Promise.allSettled([
+
+    // Fuentes en paralelo: pre-construidas + múltiples APIs en vivo
+    const [
+      librosJSON,
+      google1, google2, google3,
+      open1, open2, open3,
+      clasicos,
+    ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
+      BLG_Libros.buscarGoogleBooks('novela latinoamericana 2023 2024'),
+      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction 2024'),
+      BLG_Libros.buscarGoogleBooks('literatura española iberoamericana novela'),
+      BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
+      BLG_Libros.buscarOpenLibrary('literatura contemporánea'),
+      BLG_Libros.buscarOpenLibrary('world fiction novel'),
       BLG_Gutenberg.buscar('literatura'),
     ]);
-    const todos = [
-      ...(libros.value || []),
-      ...(clasicos.value || []),
-    ];
+
+    const todos = quitarDuplicados([
+      ...(librosJSON.value || []),
+      ...(google1.value   || []),
+      ...(google2.value   || []),
+      ...(google3.value   || []),
+      ...(open1.value     || []),
+      ...(open2.value     || []),
+      ...(open3.value     || []),
+      ...(clasicos.value  || []),
+    ]);
+
     BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras.');
     contenedor.dataset.cargado = '1';
   }
