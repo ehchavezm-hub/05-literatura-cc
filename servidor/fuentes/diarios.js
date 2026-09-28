@@ -562,10 +562,16 @@ const UA = 'Mozilla/5.0 (compatible; BLG-Bot/2.0; +https://ehchavezm-hub.github.
 async function fetchTexto(url) {
   const { default: fetch } = await import('node-fetch');
   const resp = await fetch(url, {
-    signal: AbortSignal.timeout(8000),
-    headers: { 'User-Agent': UA, 'Accept': 'application/rss+xml, application/xml, text/xml, */*' },
+    signal: AbortSignal.timeout(12000),
+    headers: {
+      'User-Agent': UA,
+      'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+      'Accept-Language': 'es,en;q=0.9',
+      'Cache-Control': 'no-cache',
+    },
+    redirect: 'follow',
   });
-  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} ${url}`);
   return resp.text();
 }
 

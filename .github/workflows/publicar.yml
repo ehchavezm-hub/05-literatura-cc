@@ -37,6 +37,8 @@ jobs:
       - name: Actualizar datos literarios
         run: node herramientas/actualizar-semana.js
         continue-on-error: true
+        env:
+          GOOGLE_BOOKS_API_KEY: ${{ secrets.GOOGLE_BOOKS_API_KEY }}
 
       - name: Insertar versión en index.html
         run: |

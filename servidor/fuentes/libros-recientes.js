@@ -18,8 +18,11 @@ async function buscarOpenLibrary(termino) {
   }
 }
 
-async function buscarGoogleBooks(termino) {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}&langRestrict=es&maxResults=15&orderBy=newest`;
+async function buscarGoogleBooks(termino, orderBy = 'newest', maxResults = 15, langRestrict = 'es') {
+  const key = process.env.GOOGLE_BOOKS_API_KEY;
+  const keyParam = key ? `&key=${key}` : '';
+  const langParam = langRestrict ? `&langRestrict=${langRestrict}` : '';
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}${langParam}&maxResults=${maxResults}&orderBy=${orderBy}${keyParam}`;
   try {
     const datos = await fetchConLimite(url);
     return (datos.items || []).map(item => {
