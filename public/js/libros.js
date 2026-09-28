@@ -3,8 +3,9 @@
   else root.BLG_Libros = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
 
-  async function buscarOpenLibrary(termino) {
-    const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(termino)}&limit=12&language=spa`;
+  async function buscarOpenLibrary(termino, limite = 40) {
+    // Sin filtro de idioma para cubrir ediciones en cualquier lengua
+    const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(termino)}&limit=${limite}&fields=title,author_name,key,first_publish_year,publisher,language`;
     try {
       const resp = await fetch(url);
       const datos = await resp.json();
@@ -23,8 +24,9 @@
     }
   }
 
-  async function buscarGoogleBooks(termino) {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}&langRestrict=es&maxResults=12&orderBy=newest`;
+  async function buscarGoogleBooks(termino, orden = 'relevance', limite = 40) {
+    // Sin langRestrict para no perder ediciones de autores no hispanohablantes
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}&maxResults=${limite}&orderBy=${orden}`;
     try {
       const resp = await fetch(url);
       const datos = await resp.json();

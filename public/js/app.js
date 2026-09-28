@@ -195,18 +195,22 @@ window.BLG_VERSION = '__VERSION__';
     const terminos = BLG_MotorBusqueda.expandirTerminos(termino);
     const terminoPrincipal = terminos[0];
 
-    const [gutenberg, crossref, openLib, googleBooks] = await Promise.allSettled([
+    const [gutenberg, crossref, openLib, openLibEn, gbRelevance, gbNewest] = await Promise.allSettled([
       BLG_Gutenberg.buscar(terminoPrincipal),
       BLG_Crossref.buscar(terminoPrincipal, diasAtras),
       BLG_Libros.buscarOpenLibrary(terminoPrincipal),
-      BLG_Libros.buscarGoogleBooks(terminoPrincipal),
+      BLG_Libros.buscarOpenLibrary(terminoPrincipal + ' author'),
+      BLG_Libros.buscarGoogleBooks('inauthor:' + terminoPrincipal, 'relevance'),
+      BLG_Libros.buscarGoogleBooks(terminoPrincipal, 'newest'),
     ]);
 
     let todos = [
-      ...(gutenberg.value || []),
-      ...(crossref.value || []),
-      ...(openLib.value || []),
-      ...(googleBooks.value || []),
+      ...(gutenberg.value    || []),
+      ...(crossref.value     || []),
+      ...(openLib.value      || []),
+      ...(openLibEn.value    || []),
+      ...(gbRelevance.value  || []),
+      ...(gbNewest.value     || []),
     ];
 
     // Los libros son atemporales: no filtrar por fecha. Solo filtrar noticias/ensayos.
@@ -292,11 +296,11 @@ window.BLG_VERSION = '__VERSION__';
       clasicos,
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      BLG_Libros.buscarGoogleBooks('novela latinoamericana 2023 2024'),
-      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction 2024'),
-      BLG_Libros.buscarGoogleBooks('literatura española iberoamericana novela'),
+      BLG_Libros.buscarGoogleBooks('novela latinoamericana', 'newest'),
+      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction', 'newest'),
+      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela', 'relevance'),
       BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
-      BLG_Libros.buscarOpenLibrary('literatura contemporánea'),
+      BLG_Libros.buscarOpenLibrary('literatura contemporanea'),
       BLG_Libros.buscarOpenLibrary('world fiction novel'),
       BLG_Gutenberg.buscar('literatura'),
     ]);
