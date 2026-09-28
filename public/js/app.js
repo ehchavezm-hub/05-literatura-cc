@@ -226,11 +226,23 @@ window.BLG_VERSION = '__VERSION__';
 
   // ── Obras y Textos ────────────────────────────────────────────────────────
   const EDITORIALES_BUSQUEDA = [
+    // Hispanófonas
     'Alfaguara', 'Anagrama', 'Fondo de Cultura Economica', 'Seix Barral', 'Tusquets',
     'Planeta', 'Acantilado', 'Eterna Cadencia', 'Sudamericana', 'Peisa',
-    'Gallimard', 'Seuil', 'Einaudi', 'Mondadori', 'Bloomsbury', 'Faber Faber', 'Suhrkamp',
-    'Penguin Random House', 'HarperCollins', 'Knopf', 'Farrar Straus Giroux',
+    'Sexto Piso', 'Era Mexico', 'LOM Ediciones', 'Cal y Arena', 'Adriana Hidalgo',
+    // Francófonas
+    'Gallimard', 'Seuil', 'Actes Sud', 'Fayard', 'Flammarion', 'Grasset',
+    // Italianas
+    'Einaudi', 'Mondadori', 'Feltrinelli', 'Adelphi', 'Garzanti',
+    // Alemanas
+    'Suhrkamp', 'S Fischer Verlag', 'Rowohlt', 'Carl Hanser Verlag', 'Diogenes Verlag',
+    // Anglófonas
+    'Bloomsbury', 'Faber Faber', 'Penguin Random House', 'HarperCollins', 'Knopf',
+    'Farrar Straus Giroux', 'W W Norton', 'Archipelago Books', 'Pushkin Press',
+    'And Other Stories', 'Europa Editions', 'New Directions Publishing',
+    // Asia / África / Resto
     'Penguin India', 'Cassava Republic', 'Companhia das Letras',
+    'Kodansha', 'Shueisha', 'Bungeishunju',
   ];
 
   async function cargarObrasTextos() {
@@ -238,60 +250,77 @@ window.BLG_VERSION = '__VERSION__';
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
 
-    const periodo  = obtenerPeriodo('obras-textos');
+    const periodo   = obtenerPeriodo('obras-textos');
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
-    const anoDesde  = isFinite(diasAtras) ? new Date().getFullYear() - Math.ceil(diasAtras / 365) : 0;
+    const anoActual = new Date().getFullYear();
+    const anoDesde  = isFinite(diasAtras) ? anoActual - Math.ceil(diasAtras / 365) : 0;
+    // Filtro de fecha para Google Books API (after:YYYY restringe la búsqueda)
+    const gbFiltro  = anoDesde > 0 ? ` after:${anoDesde}` : '';
 
-    // 6 editoriales rotativas al azar
-    const eds = EDITORIALES_BUSQUEDA.slice().sort(() => Math.random() - 0.5).slice(0, 6);
+    // 14 editoriales rotativas al azar (mayor cobertura)
+    const eds = EDITORIALES_BUSQUEDA.slice().sort(() => Math.random() - 0.5).slice(0, 14);
     const busquedasEditoriales = eds.map(ed =>
-      BLG_Libros.buscarGoogleBooks(`inpublisher:"${ed}"`, 'newest', 15)
+      BLG_Libros.buscarGoogleBooks(`inpublisher:"${ed}"${gbFiltro}`, 'newest', 20)
     );
 
     const [
       librosJSON,
-      google1, google2, google3, google4,
+      google1, google2, google3, google4, google5, google6, google7,
       open1, open2, open3,
       clasicos,
       ...edResults
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      BLG_Libros.buscarGoogleBooks('novela latinoamericana poesia', 'newest'),
-      BLG_Libros.buscarGoogleBooks('contemporary world fiction poetry novel', 'newest'),
-      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela', 'relevance'),
-      BLG_Libros.buscarGoogleBooks('african asian literature contemporary fiction', 'newest'),
-      BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
-      BLG_Libros.buscarOpenLibrary('poesia contemporanea'),
-      BLG_Libros.buscarOpenLibrary('world fiction literary novel'),
+      BLG_Libros.buscarGoogleBooks(`novela latinoamericana poesia${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`contemporary world fiction poetry novel${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`literatura iberoamericana novela ensayo${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`african asian literature contemporary fiction${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`new literary fiction prize winner${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`roman litterature contemporaine poesie${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarGoogleBooks(`neue literatur roman gedicht${gbFiltro}`, 'newest', 40),
+      BLG_Libros.buscarOpenLibrary('novela latinoamericana', 20),
+      BLG_Libros.buscarOpenLibrary('poesia contemporanea', 20),
+      BLG_Libros.buscarOpenLibrary('world fiction literary novel', 20),
       BLG_Gutenberg.buscar('literatura'),
       ...busquedasEditoriales,
     ]);
 
     let todos = quitarDuplicados([
-      ...(librosJSON.value || []),
-      ...(google1.value    || []),
-      ...(google2.value    || []),
-      ...(google3.value    || []),
-      ...(google4.value    || []),
+      ...(librosJSON.value   || []),
+      ...(google1.value      || []),
+      ...(google2.value      || []),
+      ...(google3.value      || []),
+      ...(google4.value      || []),
+      ...(google5.value      || []),
+      ...(google6.value      || []),
+      ...(google7.value      || []),
       ...edResults.flatMap(r => r.value || []),
-      // Open Library y Gutenberg al final (suelen tener más títulos antiguos)
-      ...(open1.value      || []),
-      ...(open2.value      || []),
-      ...(open3.value      || []),
-      ...(clasicos.value   || []),
+      // Open Library y Gutenberg al final (más títulos históricos)
+      ...(open1.value        || []),
+      ...(open2.value        || []),
+      ...(open3.value        || []),
+      ...(clasicos.value     || []),
     ]);
 
-    // Filtrar por período y ordenar: más recientes primero, sin fecha al final
-    if (anoDesde > 0) {
-      todos = todos.filter(i => {
-        const ano = parseInt(i.fecha, 10);
-        return !ano || ano >= anoDesde;
-      });
-    }
+    // Filtrar por período; excluir fechas futuras; sin fecha → siempre mostrar
+    todos = todos.filter(i => {
+      if (!i.fecha) return true;
+      const solo = String(i.fecha).trim();
+      const ano = parseInt(solo, 10);
+      if (!ano) return true;
+      if (ano > anoActual) return false; // fecha futura → descartar
+      if (anoDesde > 0 && ano < anoDesde) return false;
+      return true;
+    });
+
+    // Ordenar: más recientes primero; sin fecha al final
     todos.sort((a, b) => {
-      const fa = parseInt(a.fecha, 10) || 0;
-      const fb = parseInt(b.fecha, 10) || 0;
-      return fb - fa;
+      const ta = a.fecha ? new Date(a.fecha).getTime() : 0;
+      const tb = b.fecha ? new Date(b.fecha).getTime() : 0;
+      if (tb > 0 && ta > 0) return tb - ta;
+      if (tb > 0) return 1;
+      if (ta > 0) return -1;
+      return 0;
     });
 
     BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras en este período.');
@@ -299,45 +328,66 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Críticas y Reseñas ────────────────────────────────────────────────────
-  // Fuentes: The Guardian Books · DOAJ · Crossref · JSON pre-construido (90+ diarios)
+  // Fuentes: The Guardian · DOAJ · Crossref · JSON pre-construido (90+ diarios)
   async function cargarCriticas() {
     const contenedor = document.getElementById('blg-resultados-criticas');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
-    const periodo = obtenerPeriodo('criticas');
+    const periodo   = obtenerPeriodo('criticas');
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
+    const hoy       = new Date();
 
     const [
       semana, diarios, archivo,
-      crossref1, crossref2,
-      guardian1, guardian2,
+      crossref1, crossref2, crossref3, crossref4,
+      guardian1, guardian2, guardian3, guardian4,
       doaj1, doaj2,
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarUltimaSemana(),
-      BLG_ServicioDatos.cargarDiarios(),       // JSON pre-construido: 90+ diarios del mundo
+      BLG_ServicioDatos.cargarDiarios(),       // JSON: 90+ diarios del mundo
       BLG_ServicioDatos.cargarArchivo(),
-      BLG_Crossref.buscar('critica literaria reseña novela latinoamerica', diasAtras),
+      BLG_Crossref.buscar('critica literaria resena novela latinoamerica', diasAtras),
       BLG_Crossref.buscar('literary criticism book review fiction poetry', diasAtras),
+      BLG_Crossref.buscar('literatura contemporanea ensayo critica cultural', diasAtras),
+      BLG_Crossref.buscar('world literature review translation criticism', diasAtras),
       BLG_Guardian.buscarLibros(diasAtras),
-      BLG_Guardian.buscarCritica('latin american literature', diasAtras),
+      BLG_Guardian.buscarCritica('latin american literature fiction', diasAtras),
+      BLG_Guardian.buscarCritica('world fiction poetry prize review', diasAtras),
+      BLG_Guardian.buscarCritica('literary criticism essay novel', diasAtras),
       BLG_DOAJ.buscarCritica(diasAtras),
       BLG_DOAJ.buscarLatinoamerica(diasAtras),
     ]);
 
-    const todos = [
-      ...(semana.value   || []),
-      ...(diarios.value  || []),
-      ...(archivo.value  || []).filter(i => i.tipo === 'ensayo' || i.tipo === 'resena' || i.tipo === 'noticia'),
+    let todos = [
+      ...(semana.value    || []),
+      ...(diarios.value   || []),
+      ...(archivo.value   || []).filter(i => i.tipo === 'ensayo' || i.tipo === 'resena' || i.tipo === 'noticia'),
       ...(crossref1.value || []),
       ...(crossref2.value || []),
+      ...(crossref3.value || []),
+      ...(crossref4.value || []),
       ...(guardian1.value || []),
       ...(guardian2.value || []),
-      ...(doaj1.value    || []),
-      ...(doaj2.value    || []),
+      ...(guardian3.value || []),
+      ...(guardian4.value || []),
+      ...(doaj1.value     || []),
+      ...(doaj2.value     || []),
     ];
 
-    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(quitarDuplicados(todos), diasAtras);
-    BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No se encontraron críticas ni reseñas recientes.');
+    todos = quitarDuplicados(todos);
+    // Filtrar por período y eliminar fechas futuras
+    todos = BLG_MotorBusqueda.filtrarPorFecha(todos, diasAtras);
+    todos = todos.filter(i => !i.fecha || new Date(i.fecha) <= hoy);
+
+    // Ordenar: más recientes primero; sin fecha al final
+    todos.sort((a, b) => {
+      if (!a.fecha && !b.fecha) return 0;
+      if (!a.fecha) return 1;
+      if (!b.fecha) return -1;
+      return new Date(b.fecha) - new Date(a.fecha);
+    });
+
+    BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron críticas ni reseñas recientes.');
     contenedor.dataset.cargado = '1';
   }
 

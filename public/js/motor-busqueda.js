@@ -37,26 +37,36 @@
 
   function calcularDiasAtras(periodo) {
     const mapa = {
-      '1':  365,
-      '2':  730,
-      '3':  1095,
-      '4':  1460,
-      '5':  1825,
-      '10': 3650,
-      '20': 7300,
+      '1':       365,
+      '2':       730,
+      '3':       1095,
+      '4':       1460,
+      '5':       1825,
+      '10':      3650,
+      '20':      7300,
+      'inicio':  Infinity,
       'historico': Infinity,
     };
-    return mapa[String(periodo)] || 365;
+    return mapa[String(periodo)] ?? 365;
   }
 
   function filtrarPorFecha(items, diasAtras) {
     if (diasAtras === Infinity) return items;
     const limite = new Date();
     limite.setDate(limite.getDate() - diasAtras);
+    const limiteAno = limite.getFullYear();
+    const hoy = new Date();
     return items.filter(item => {
       if (!item.fecha) return true;
-      const f = new Date(item.fecha);
-      return isNaN(f.getTime()) || f >= limite;
+      const solo = String(item.fecha).trim();
+      // Año solo (ej. "2025"): comparar sólo el año para no perder publicaciones anuales
+      if (/^\d{4}$/.test(solo)) {
+        const ano = parseInt(solo, 10);
+        return ano >= limiteAno && ano <= hoy.getFullYear();
+      }
+      const f = new Date(solo);
+      if (isNaN(f.getTime())) return true;
+      return f >= limite && f <= hoy; // excluye fechas futuras
     });
   }
 
