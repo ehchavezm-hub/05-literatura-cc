@@ -1,4 +1,4 @@
-/* global BLG_MotorBusqueda, BLG_Gutenberg, BLG_Crossref, BLG_Libros, BLG_ServicioDatos, BLG_Interfaz, BLG_Autores, BLG_Temas, BLG_Voz */
+/* global BLG_MotorBusqueda, BLG_Gutenberg, BLG_Crossref, BLG_Libros, BLG_ServicioDatos, BLG_Interfaz, BLG_Autores, BLG_Temas, BLG_Voz, BLG_Guardian, BLG_DOAJ */
 
 window.BLG_VERSION = '__VERSION__';
 
@@ -224,36 +224,61 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Obras y Textos ────────────────────────────────────────────────────────
+  // Fuentes: Google Books (por editorial + género), Open Library, Gutenberg
+  // Editoriales representativas por región:
+  const EDITORIALES_BUSQUEDA = [
+    // Iberoamérica
+    'Alfaguara', 'Anagrama', 'Fondo de Cultura Economica', 'Seix Barral', 'Tusquets',
+    'Planeta', 'Acantilado', 'Eterna Cadencia', 'Sudamericana', 'Peisa',
+    // Europa
+    'Gallimard', 'Seuil', 'Einaudi', 'Mondadori', 'Bloomsbury', 'Faber Faber', 'Suhrkamp',
+    // Anglosajón
+    'Penguin Random House', 'HarperCollins', 'Knopf', 'Farrar Straus Giroux',
+    // Asia / África
+    'Penguin India', 'Cassava Republic', 'Companhia das Letras',
+  ];
+
   async function cargarObrasTextos() {
     const contenedor = document.getElementById('blg-resultados-obras-textos');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
 
+    // Seleccionar 6 editoriales al azar para no saturar la API
+    const eds = EDITORIALES_BUSQUEDA.sort(() => Math.random() - 0.5).slice(0, 6);
+    const busquedasEditoriales = eds.map(ed =>
+      BLG_Libros.buscarGoogleBooks(`inpublisher:"${ed}"`, 'newest', 15)
+    );
+
     const [
       librosJSON,
-      google1, google2, google3,
+      google1, google2, google3, google4,
       open1, open2, open3,
       clasicos,
+      ...edResults
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
       BLG_Libros.buscarGoogleBooks('novela latinoamericana poesia', 'newest'),
-      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction poetry', 'newest'),
-      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela poesia', 'relevance'),
+      BLG_Libros.buscarGoogleBooks('contemporary world fiction poetry novel', 'newest'),
+      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela', 'relevance'),
+      BLG_Libros.buscarGoogleBooks('african asian literature contemporary fiction', 'newest'),
       BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
       BLG_Libros.buscarOpenLibrary('poesia contemporanea'),
-      BLG_Libros.buscarOpenLibrary('world fiction novel poetry'),
+      BLG_Libros.buscarOpenLibrary('world fiction literary novel'),
       BLG_Gutenberg.buscar('literatura'),
+      ...busquedasEditoriales,
     ]);
 
     const todos = quitarDuplicados([
       ...(librosJSON.value || []),
-      ...(google1.value   || []),
-      ...(google2.value   || []),
-      ...(google3.value   || []),
-      ...(open1.value     || []),
-      ...(open2.value     || []),
-      ...(open3.value     || []),
-      ...(clasicos.value  || []),
+      ...(google1.value    || []),
+      ...(google2.value    || []),
+      ...(google3.value    || []),
+      ...(google4.value    || []),
+      ...(open1.value      || []),
+      ...(open2.value      || []),
+      ...(open3.value      || []),
+      ...(clasicos.value   || []),
+      ...edResults.flatMap(r => r.value || []),
     ]);
 
     BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras.');
@@ -261,6 +286,7 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Críticas y Reseñas ────────────────────────────────────────────────────
+  // Fuentes: The Guardian Books · DOAJ · Crossref · JSON pre-construido (90+ diarios)
   async function cargarCriticas() {
     const contenedor = document.getElementById('blg-resultados-criticas');
     if (!contenedor || contenedor.dataset.cargado) return;
@@ -268,30 +294,34 @@ window.BLG_VERSION = '__VERSION__';
     const periodo = obtenerPeriodo('criticas');
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
 
-    const [semana, diarios, crossref1, crossref2, archivo] = await Promise.allSettled([
+    const [
+      semana, diarios, archivo,
+      crossref1, crossref2,
+      guardian1, guardian2,
+      doaj1, doaj2,
+    ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarUltimaSemana(),
-      BLG_ServicioDatos.cargarDiarios(),
-      BLG_Crossref.buscar('critica literaria reseña novela', diasAtras),
-      BLG_Crossref.buscar('literary criticism book review', diasAtras),
+      BLG_ServicioDatos.cargarDiarios(),       // JSON pre-construido: 90+ diarios del mundo
       BLG_ServicioDatos.cargarArchivo(),
+      BLG_Crossref.buscar('critica literaria reseña novela latinoamerica', diasAtras),
+      BLG_Crossref.buscar('literary criticism book review fiction poetry', diasAtras),
+      BLG_Guardian.buscarLibros(diasAtras),
+      BLG_Guardian.buscarCritica('latin american literature', diasAtras),
+      BLG_DOAJ.buscarCritica(diasAtras),
+      BLG_DOAJ.buscarLatinoamerica(diasAtras),
     ]);
 
-    let todos = [
-      ...(semana.value || []),
-      ...(diarios.value || []),
+    const todos = [
+      ...(semana.value   || []),
+      ...(diarios.value  || []),
+      ...(archivo.value  || []).filter(i => i.tipo === 'ensayo' || i.tipo === 'resena' || i.tipo === 'noticia'),
       ...(crossref1.value || []),
       ...(crossref2.value || []),
-      ...(archivo.value || []).filter(i => i.tipo === 'ensayo' || i.tipo === 'resena' || i.tipo === 'noticia'),
+      ...(guardian1.value || []),
+      ...(guardian2.value || []),
+      ...(doaj1.value    || []),
+      ...(doaj2.value    || []),
     ];
-
-    // Fallback cuando no hay datos pre-construidos
-    if (todos.length === 0) {
-      const [fb1, fb2] = await Promise.allSettled([
-        BLG_Crossref.buscar('literary review criticism fiction', diasAtras),
-        BLG_Crossref.buscar('critica literaria latinoamerica ensayo', diasAtras),
-      ]);
-      todos = [...(fb1.value || []), ...(fb2.value || [])];
-    }
 
     const filtrados = BLG_MotorBusqueda.filtrarPorFecha(quitarDuplicados(todos), diasAtras);
     BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No se encontraron críticas ni reseñas recientes.');

@@ -195,9 +195,14 @@ const FUENTES_DIARIOS = [
   { pais: 'SA', nombre: 'Arab News Culture',                url: 'https://www.arabnews.com/rss.xml?pid=301',                   ambito: 'internacional' },
 ];
 
+const UA = 'Mozilla/5.0 (compatible; BLG-Bot/2.0; +https://ehchavezm-hub.github.io/05-literatura-cc/)';
+
 async function fetchTexto(url) {
   const { default: fetch } = await import('node-fetch');
-  const resp = await fetch(url, { signal: AbortSignal.timeout(6000) });
+  const resp = await fetch(url, {
+    signal: AbortSignal.timeout(8000),
+    headers: { 'User-Agent': UA, 'Accept': 'application/rss+xml, application/xml, text/xml, */*' },
+  });
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   return resp.text();
 }
