@@ -513,7 +513,41 @@
     },
   ];
 
-  function obtenerPrincipales(premioId, cantidad = 6) {
+  const CONTINENTE_MAP = {
+    // América
+    'Perú': 'América', 'Colombia': 'América', 'Chile': 'América', 'México': 'América',
+    'Argentina': 'América', 'Cuba': 'América', 'Uruguay': 'América', 'Brasil': 'América',
+    'Venezuela': 'América', 'Guatemala': 'América', 'Paraguay': 'América',
+    'Nicaragua': 'América', 'Estados Unidos': 'América', 'Canadá': 'América',
+    'Trinidad': 'América', 'Santa Lucía': 'América', 'Jamaica': 'América',
+    'Guadalupe': 'América', 'República Dominicana': 'América', 'Martinica': 'América',
+    // Europa
+    'España': 'Europa', 'Francia': 'Europa', 'Alemania': 'Europa', 'Italia': 'Europa',
+    'Reino Unido': 'Europa', 'Portugal': 'Europa', 'Irlanda': 'Europa', 'Austria': 'Europa',
+    'Noruega': 'Europa', 'Suecia': 'Europa', 'Dinamarca': 'Europa', 'Finlandia': 'Europa',
+    'Polonia': 'Europa', 'Rusia': 'Europa', 'Hungría': 'Europa', 'Bélgica': 'Europa',
+    'Suiza': 'Europa', 'Grecia': 'Europa', 'Rumania': 'Europa', 'Yugoslavia': 'Europa',
+    'Checoslovaquia': 'Europa', 'Bielorrusia': 'Europa', 'Islandia': 'Europa',
+    'Bulgaria': 'Europa', 'Albania': 'Europa', 'Croacia': 'Europa', 'Eslovenia': 'Europa',
+    'Países Bajos': 'Europa', 'Escocia': 'Europa', 'Irlanda del Norte': 'Europa',
+    // Asia
+    'Japón': 'Asia', 'China': 'Asia', 'India': 'Asia', 'Turquía': 'Asia',
+    'Israel': 'Asia', 'Corea del Sur': 'Asia', 'Afganistán': 'Asia', 'Omán': 'Asia',
+    'Irán': 'Asia', 'Líbano': 'Asia', 'Sri Lanka': 'Asia',
+    // África
+    'Nigeria': 'África', 'Egipto': 'África', 'Sudáfrica': 'África', 'Tanzania': 'África',
+    'Senegal': 'África', 'Marruecos': 'África', 'Argelia': 'África', 'Zimbabue': 'África',
+    'Zimbabwe': 'África',
+    // Oceanía
+    'Australia': 'Oceanía', 'Nueva Zelanda': 'Oceanía',
+  };
+
+  function obtenerContinente(paisStr) {
+    const primer = (paisStr || '').split('/')[0].trim();
+    return CONTINENTE_MAP[primer] || '';
+  }
+
+  function obtenerPrincipales(premioId, cantidad = 8) {
     const p = PREMIOS.find(p => p.id === premioId);
     return p ? p.autores.slice(0, cantidad) : [];
   }
@@ -523,5 +557,5 @@
     return p ? p.autores : [];
   }
 
-  return { PREMIOS, obtenerPrincipales, obtenerTodos };
+  return { PREMIOS, obtenerPrincipales, obtenerTodos, obtenerContinente };
 });

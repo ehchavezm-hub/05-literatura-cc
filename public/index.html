@@ -156,6 +156,74 @@
       .tarjeta-v2-actions { flex-direction: row; flex-wrap: wrap; }
     }
 
+    /* ── Lista de autores por premio ──────────────────────────────────────── */
+    .autores-premio-seccion {
+      background: var(--color-card);
+      border: 1px solid var(--color-borde);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .autores-premio-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px;
+      background: rgba(0,122,255,0.05);
+      border-bottom: 1px solid var(--color-borde);
+    }
+    .dark .autores-premio-header { background: rgba(0,122,255,0.08); }
+    .autores-premio-icono { font-size: 1rem; }
+    .autores-premio-titulo {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: var(--color-texto);
+    }
+    .autores-lista { }
+    .autor-fila {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--color-borde);
+    }
+    .autor-fila:last-child { border-bottom: none; }
+    .autor-anio {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--color-blue);
+      min-width: 36px; flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .btn-autor-fila, .btn-autor-modal-fila {
+      flex: 1; text-align: left;
+      font-weight: 600; font-size: 0.875rem;
+      color: var(--color-texto);
+      transition: color .12s;
+    }
+    .btn-autor-fila:hover, .btn-autor-modal-fila:hover { color: var(--color-blue); text-decoration: underline; }
+    .autor-geo {
+      font-size: 0.7rem; color: var(--color-texto-sec);
+      text-align: right; white-space: nowrap; flex-shrink: 0;
+      max-width: 180px; overflow: hidden; text-overflow: ellipsis;
+    }
+    .btn-mas-lista {
+      display: flex; width: 100%; align-items: center; justify-content: center;
+      padding: 10px 16px;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--color-blue);
+      border-top: 1px solid var(--color-borde);
+      background: rgba(0,122,255,0.04);
+      transition: background .12s;
+    }
+    .btn-mas-lista:hover { background: rgba(0,122,255,0.1); }
+    .modal-autores-lista {
+      border: 1px solid var(--color-borde);
+      border-radius: 10px;
+      overflow: hidden;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    @media (max-width: 560px) {
+      .autor-geo { max-width: 110px; font-size: 0.65rem; }
+      .btn-autor-fila, .btn-autor-modal-fila { font-size: 0.82rem; }
+    }
+
     /* Cargando */
     .cargando { display: flex; justify-content: center; align-items: center; padding: 64px 16px; gap: 12px; color: var(--color-texto-sec); }
     .spinner { width: 36px; height: 36px; border: 3px solid var(--color-borde); border-top-color: var(--color-blue); border-radius: 50%; animation: spin 1s linear infinite; }

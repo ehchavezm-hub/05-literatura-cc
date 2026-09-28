@@ -89,37 +89,48 @@ window.BLG_VERSION = '__VERSION__';
     if (input) { input.value = nombre; ejecutarBusqueda(); }
   }
 
+  function filaAutor(a, clase) {
+    const { obtenerContinente } = BLG_Autores;
+    const continente = obtenerContinente(a.pais);
+    const geo = continente ? `${continente} · ${a.pais}` : a.pais;
+    return `
+      <div class="autor-fila">
+        <span class="autor-anio">${a.año || ''}</span>
+        <button class="${clase}" data-autor="${escHtml(a.nombre)}">${escHtml(a.nombre)}</button>
+        <span class="autor-geo">${escHtml(geo)}</span>
+      </div>`;
+  }
+
   function renderizarAutores() {
     const contenedor = document.getElementById('blg-autores-panel');
     if (!contenedor || autoresRendered) return;
     autoresRendered = true;
     const { PREMIOS } = BLG_Autores;
+    const MAX = 8;
 
     contenedor.innerHTML = PREMIOS.map(premio => {
-      const principales = premio.autores.slice(0, 6);
-      const otros = premio.autores.slice(6);
+      const visibles = premio.autores.slice(0, MAX);
+      const resto = premio.autores.slice(MAX);
       return `
-        <div class="autores-continente">
-          <div class="autores-continente-cabecera">
-            <span class="autores-continente-icono" aria-hidden="true">${premio.icono}</span>
-            <span class="autores-continente-nombre">${escHtml(premio.nombre)}</span>
+        <div class="autores-premio-seccion">
+          <div class="autores-premio-header">
+            <span class="autores-premio-icono" aria-hidden="true">${premio.icono}</span>
+            <span class="autores-premio-titulo">${escHtml(premio.nombre)}</span>
           </div>
-          <div class="autores-grid">
-            ${principales.map(a => `
-              <button class="btn-autor-panel" data-autor="${escHtml(a.nombre)}" title="${escHtml(a.pais)}${a.año ? ' · ' + a.año : ''}">
-                ${escHtml(a.nombre)}<span class="pais">${escHtml(a.pais)}${a.año ? ' ' + a.año : ''}</span>
-              </button>`).join('')}
-            ${otros.length ? `
-              <button class="btn-mas-panel" data-premio="${escHtml(premio.id)}">+${otros.length} más</button>` : ''}
+          <div class="autores-lista">
+            ${visibles.map(a => filaAutor(a, 'btn-autor-fila')).join('')}
           </div>
+          ${resto.length ? `
+            <button class="btn-mas-lista" data-premio="${escHtml(premio.id)}">
+              Ver los ${resto.length} ganadores restantes →
+            </button>` : ''}
         </div>`;
     }).join('');
 
-    contenedor.querySelectorAll('.btn-autor-panel').forEach(btn => {
+    contenedor.querySelectorAll('.btn-autor-fila').forEach(btn => {
       btn.addEventListener('click', () => buscarAutor(btn.dataset.autor));
     });
-
-    contenedor.querySelectorAll('.btn-mas-panel').forEach(btn => {
+    contenedor.querySelectorAll('.btn-mas-lista').forEach(btn => {
       btn.addEventListener('click', () => abrirModalAutores(btn.dataset.premio));
     });
   }
@@ -132,19 +143,14 @@ window.BLG_VERSION = '__VERSION__';
     const body = document.getElementById('blg-modal-autores-body');
     if (!modal || !body) return;
     body.innerHTML = `
-      <h2 class="text-lg font-semibold mb-4">${premio.icono} ${escHtml(premio.nombre)} — todos los ganadores</h2>
-      <div class="flex flex-wrap gap-2">
-        ${premio.autores.map(a => `
-          <button class="btn-autor-modal px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm hover:bg-blg-blue hover:text-white transition-colors"
-            data-autor="${escHtml(a.nombre)}">
-            ${escHtml(a.nombre)} <span class="text-xs opacity-60">(${escHtml(a.pais)}${a.año ? ' · ' + a.año : ''})</span>
-          </button>`).join('')}
+      <h2 style="font-size:1rem;font-weight:700;margin-bottom:12px;">
+        ${premio.icono} ${escHtml(premio.nombre)} — todos los ganadores
+      </h2>
+      <div class="autores-lista modal-autores-lista">
+        ${premio.autores.map(a => filaAutor(a, 'btn-autor-modal-fila')).join('')}
       </div>`;
-    body.querySelectorAll('.btn-autor-modal').forEach(btn => {
-      btn.addEventListener('click', () => {
-        cerrarModal();
-        buscarAutor(btn.dataset.autor);
-      });
+    body.querySelectorAll('.btn-autor-modal-fila').forEach(btn => {
+      btn.addEventListener('click', () => { cerrarModal(); buscarAutor(btn.dataset.autor); });
     });
     modal.hidden = false;
     modal.querySelector('[data-cerrar-modal]').focus();
