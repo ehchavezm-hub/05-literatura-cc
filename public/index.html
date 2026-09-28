@@ -139,7 +139,7 @@
     .tarjeta-v2-fuente-link:hover { text-decoration: underline; }
 
     /* Botones de acción */
-    .btn-visitar, .btn-whatsapp {
+    .btn-accion {
       display: inline-flex !important; align-items: center; gap: 6px;
       height: 38px; min-height: 38px; min-width: unset;
       padding: 0 14px; border-radius: 10px;
@@ -147,9 +147,13 @@
       text-decoration: none; transition: opacity .15s;
       border: none !important;
     }
-    .btn-visitar  { background: #1C3A5E !important; color: #fff !important; }
-    .btn-whatsapp { background: #128C7E !important; color: #fff !important; }
-    .btn-visitar:hover, .btn-whatsapp:hover { opacity: .85; }
+    .btn-visitar   { background: #1C3A5E !important; color: #fff !important; }
+    .btn-descargar { background: #1C3A5E !important; color: #fff !important; }
+    .btn-whatsapp  { background: #128C7E !important; color: #fff !important; }
+    .btn-accion:hover { opacity: .85; }
+
+    /* Badge acceso libre */
+    .badge-acceso-libre { color: #34C759; }
 
     @media (max-width: 560px) {
       .tarjeta-v2-inner   { flex-direction: column; }

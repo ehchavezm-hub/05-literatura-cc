@@ -5,7 +5,7 @@
 
   const LABEL_TIPO = {
     clasico: '📜 Clásico',
-    ensayo:  '📄 Ensayo',
+    ensayo:  '📄 Paper Académico',
     libro:   '📚 Libro',
     noticia: '≡ Noticia',
     resena:  '✍️ Reseña',
@@ -30,7 +30,6 @@
   function fechaRelativa(fechaStr) {
     if (!fechaStr) return '';
     const solo = String(fechaStr).trim();
-    // Si es sólo año (4 dígitos) no se puede calcular diferencia
     if (/^\d{4}$/.test(solo)) return `Publicado en ${solo}`;
     const d = new Date(solo);
     if (isNaN(d)) return solo;
@@ -60,13 +59,15 @@
     const labelTipo   = LABEL_TIPO[tipo]  || tipo;
     const esNacional  = item.ambito === 'nacional';
 
-    // Badges
+    // ── Badges ────────────────────────────────────────────────────────────
     const badgeTipo = `<span class="badge-v2 ${badgeClass}">${escHtml(labelTipo)}</span>`;
-    const fechaRel  = fechaRelativa(item.fecha);
-    const badgeFecha = fechaRel
-      ? `<span class="badge-v2 badge-fecha-rel">${escHtml(fechaRel)}</span>`
+
+    const esAbierto = item.acceso_abierto === true || item.acceso === 'libre';
+    const badgeAcceso = esAbierto
+      ? `<span class="badge-v2 badge-acceso-libre">Acceso libre ✓</span>`
       : '';
-    const tema = item.editorial || item.tema || '';
+
+    const tema = item.editorial || item.revista || item.tema || '';
     const badgeTema = tema
       ? `<span class="badge-v2 badge-tema">Tema: ${escHtml(tema)}</span>`
       : '';
@@ -74,29 +75,34 @@
       ? `<span class="badge-v2 badge-nacional">🇵🇪 Perú</span>`
       : '';
 
-    // Contenido
+    // ── Contenido ─────────────────────────────────────────────────────────
     const titulo = escHtml(item.titulo || 'Sin título');
     const desc = item.descripcion
       ? `<p class="tarjeta-v2-desc">${escHtml(item.descripcion)}</p>`
       : '';
 
-    // Metadata
+    // ── Metadata ──────────────────────────────────────────────────────────
     const metaAutor  = item.autores
       ? `<p class="tarjeta-v2-meta-fila"><strong>Autor:</strong> ${escHtml(item.autores)}</p>`
       : '';
     const metaFuente = item.fuente
-      ? `<p class="tarjeta-v2-meta-fila"><strong>Fuente:</strong> <a class="tarjeta-v2-fuente-link" href="${escHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer">${escHtml(item.fuente)}</a></p>`
+      ? `<p class="tarjeta-v2-meta-fila"><strong>Fuente:</strong> <a class="tarjeta-v2-fuente-link" href="${escHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer">${escHtml(item.fuente)}${item.revista && item.revista !== item.fuente ? '' : ' (revista académica)'}</a></p>`
       : '';
     const metaFecha  = item.fecha
       ? `<p class="tarjeta-v2-meta-fila"><strong>Fecha:</strong> ${escHtml(formatearFechaLarga(item.fecha))}</p>`
       : '';
 
-    // Botones
+    // ── Botones ───────────────────────────────────────────────────────────
     const url = escHtml(item.url || '#');
     const waTexto = encodeURIComponent((item.titulo || '') + (item.url ? '\n' + item.url : ''));
-    const btnVisitar   = `<a class="btn-visitar"  href="${url}" target="_blank" rel="noopener noreferrer">🔗 Visitar enlace</a>`;
-    const btnWhatsApp  = item.url
-      ? `<a class="btn-whatsapp" href="https://wa.me/?text=${waTexto}" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>`
+    const btnVisitar = item.url
+      ? `<a class="btn-accion btn-visitar" href="${url}" target="_blank" rel="noopener noreferrer">🔗 Visitar enlace</a>`
+      : '';
+    const btnPDF = item.pdf_url
+      ? `<a class="btn-accion btn-descargar" href="${escHtml(item.pdf_url)}" target="_blank" rel="noopener noreferrer">⬇ Descargar PDF</a>`
+      : '';
+    const btnWhatsApp = item.url
+      ? `<a class="btn-accion btn-whatsapp" href="https://wa.me/?text=${waTexto}" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>`
       : '';
 
     return `
@@ -104,7 +110,7 @@
         <div class="tarjeta-v2-inner">
           <div class="tarjeta-v2-left">
             <div class="tarjeta-badges">
-              ${badgeTipo}${badgeFecha}${badgeTema}${badgePeru}
+              ${badgeTipo}${badgeAcceso}${badgeTema}${badgePeru}
             </div>
             <p class="tarjeta-v2-titulo">${titulo}</p>
             ${desc}
@@ -113,8 +119,7 @@
             </div>
           </div>
           <div class="tarjeta-v2-actions">
-            ${btnVisitar}
-            ${btnWhatsApp}
+            ${btnVisitar}${btnPDF}${btnWhatsApp}
           </div>
         </div>
       </article>`;

@@ -12,9 +12,10 @@
         titulo: libro.title,
         autores: libro.authors.map(a => a.name).join(', '),
         url: libro.formats['text/html'] || libro.formats['application/epub+zip'] || `https://www.gutenberg.org/ebooks/${libro.id}`,
+        pdf_url: libro.formats['application/pdf'] || null,
         fuente: 'Project Gutenberg',
         tipo: 'clasico',
-        acceso: 'libre',
+        acceso_abierto: true,
         fecha: libro.copyright ? String(libro.copyright) : null,
         ambito: 'internacional',
       }));

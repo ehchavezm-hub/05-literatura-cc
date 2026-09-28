@@ -15,6 +15,7 @@
         url: `https://openlibrary.org${libro.key}`,
         fuente: 'Open Library',
         tipo: 'libro',
+        acceso_abierto: true,
         fecha: libro.first_publish_year?.toString() || null,
         editorial: (libro.publisher || [])[0] || '',
         ambito: 'internacional',
