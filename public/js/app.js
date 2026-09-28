@@ -93,24 +93,24 @@ window.BLG_VERSION = '__VERSION__';
     const contenedor = document.getElementById('blg-autores-panel');
     if (!contenedor || autoresRendered) return;
     autoresRendered = true;
-    const { CONTINENTES } = BLG_Autores;
+    const { PREMIOS } = BLG_Autores;
 
-    contenedor.innerHTML = CONTINENTES.map(cont => {
-      const principales = cont.autores.slice(0, 5);
-      const otros = cont.autores.slice(5);
+    contenedor.innerHTML = PREMIOS.map(premio => {
+      const principales = premio.autores.slice(0, 6);
+      const otros = premio.autores.slice(6);
       return `
         <div class="autores-continente">
           <div class="autores-continente-cabecera">
-            <span class="autores-continente-icono" aria-hidden="true">${cont.icono}</span>
-            <span class="autores-continente-nombre">${escHtml(cont.nombre)}</span>
+            <span class="autores-continente-icono" aria-hidden="true">${premio.icono}</span>
+            <span class="autores-continente-nombre">${escHtml(premio.nombre)}</span>
           </div>
           <div class="autores-grid">
             ${principales.map(a => `
-              <button class="btn-autor-panel" data-autor="${escHtml(a.nombre)}" title="${escHtml(a.pais)}">
-                ${escHtml(a.nombre)}<span class="pais">${escHtml(a.pais)}</span>
+              <button class="btn-autor-panel" data-autor="${escHtml(a.nombre)}" title="${escHtml(a.pais)}${a.año ? ' · ' + a.año : ''}">
+                ${escHtml(a.nombre)}<span class="pais">${escHtml(a.pais)}${a.año ? ' ' + a.año : ''}</span>
               </button>`).join('')}
             ${otros.length ? `
-              <button class="btn-mas-panel" data-continente="${cont.id}">+${otros.length} más</button>` : ''}
+              <button class="btn-mas-panel" data-premio="${escHtml(premio.id)}">+${otros.length} más</button>` : ''}
           </div>
         </div>`;
     }).join('');
@@ -120,24 +120,24 @@ window.BLG_VERSION = '__VERSION__';
     });
 
     contenedor.querySelectorAll('.btn-mas-panel').forEach(btn => {
-      btn.addEventListener('click', () => abrirModalAutores(btn.dataset.continente));
+      btn.addEventListener('click', () => abrirModalAutores(btn.dataset.premio));
     });
   }
 
-  function abrirModalAutores(continenteId) {
-    const { CONTINENTES } = BLG_Autores;
-    const cont = CONTINENTES.find(c => c.id === continenteId);
-    if (!cont) return;
+  function abrirModalAutores(premioId) {
+    const { PREMIOS } = BLG_Autores;
+    const premio = PREMIOS.find(p => p.id === premioId);
+    if (!premio) return;
     const modal = document.getElementById('blg-modal-autores');
     const body = document.getElementById('blg-modal-autores-body');
     if (!modal || !body) return;
     body.innerHTML = `
-      <h2 class="text-lg font-semibold mb-4">${cont.icono} ${cont.nombre} — todos los autores</h2>
+      <h2 class="text-lg font-semibold mb-4">${premio.icono} ${escHtml(premio.nombre)} — todos los ganadores</h2>
       <div class="flex flex-wrap gap-2">
-        ${cont.autores.map(a => `
+        ${premio.autores.map(a => `
           <button class="btn-autor-modal px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm hover:bg-blg-blue hover:text-white transition-colors"
             data-autor="${escHtml(a.nombre)}">
-            ${escHtml(a.nombre)} <span class="text-xs opacity-60">(${escHtml(a.pais)})</span>
+            ${escHtml(a.nombre)} <span class="text-xs opacity-60">(${escHtml(a.pais)}${a.año ? ' · ' + a.año : ''})</span>
           </button>`).join('')}
       </div>`;
     body.querySelectorAll('.btn-autor-modal').forEach(btn => {
