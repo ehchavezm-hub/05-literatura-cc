@@ -37,11 +37,13 @@
 
   function calcularDiasAtras(periodo) {
     const mapa = {
-      '1': 365,
-      '2': 730,
-      '3': 1095,
-      '4': 1460,
-      '5': 1825,
+      '1':  365,
+      '2':  730,
+      '3':  1095,
+      '4':  1460,
+      '5':  1825,
+      '10': 3650,
+      '20': 7300,
       'historico': Infinity,
     };
     return mapa[String(periodo)] || 365;

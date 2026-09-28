@@ -71,7 +71,8 @@ window.BLG_VERSION = '__VERSION__';
 
           const panel = grupo.dataset.periodo;
           if (panel === 'buscar') ejecutarBusqueda();
-          if (panel === 'criticas') { delete document.getElementById('blg-resultados-criticas')?.dataset.cargado; cargarCriticas(); }
+          if (panel === 'obras-textos') { delete document.getElementById('blg-resultados-obras-textos')?.dataset.cargado; cargarObrasTextos(); }
+          if (panel === 'criticas')     { delete document.getElementById('blg-resultados-criticas')?.dataset.cargado;     cargarCriticas(); }
         });
       });
     });
@@ -224,17 +225,11 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Obras y Textos ────────────────────────────────────────────────────────
-  // Fuentes: Google Books (por editorial + género), Open Library, Gutenberg
-  // Editoriales representativas por región:
   const EDITORIALES_BUSQUEDA = [
-    // Iberoamérica
     'Alfaguara', 'Anagrama', 'Fondo de Cultura Economica', 'Seix Barral', 'Tusquets',
     'Planeta', 'Acantilado', 'Eterna Cadencia', 'Sudamericana', 'Peisa',
-    // Europa
     'Gallimard', 'Seuil', 'Einaudi', 'Mondadori', 'Bloomsbury', 'Faber Faber', 'Suhrkamp',
-    // Anglosajón
     'Penguin Random House', 'HarperCollins', 'Knopf', 'Farrar Straus Giroux',
-    // Asia / África
     'Penguin India', 'Cassava Republic', 'Companhia das Letras',
   ];
 
@@ -243,8 +238,12 @@ window.BLG_VERSION = '__VERSION__';
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
 
-    // Seleccionar 6 editoriales al azar para no saturar la API
-    const eds = EDITORIALES_BUSQUEDA.sort(() => Math.random() - 0.5).slice(0, 6);
+    const periodo  = obtenerPeriodo('obras-textos');
+    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
+    const anoDesde  = isFinite(diasAtras) ? new Date().getFullYear() - Math.ceil(diasAtras / 365) : 0;
+
+    // 6 editoriales rotativas al azar
+    const eds = EDITORIALES_BUSQUEDA.slice().sort(() => Math.random() - 0.5).slice(0, 6);
     const busquedasEditoriales = eds.map(ed =>
       BLG_Libros.buscarGoogleBooks(`inpublisher:"${ed}"`, 'newest', 15)
     );
@@ -268,20 +267,34 @@ window.BLG_VERSION = '__VERSION__';
       ...busquedasEditoriales,
     ]);
 
-    const todos = quitarDuplicados([
+    let todos = quitarDuplicados([
       ...(librosJSON.value || []),
       ...(google1.value    || []),
       ...(google2.value    || []),
       ...(google3.value    || []),
       ...(google4.value    || []),
+      ...edResults.flatMap(r => r.value || []),
+      // Open Library y Gutenberg al final (suelen tener más títulos antiguos)
       ...(open1.value      || []),
       ...(open2.value      || []),
       ...(open3.value      || []),
       ...(clasicos.value   || []),
-      ...edResults.flatMap(r => r.value || []),
     ]);
 
-    BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras.');
+    // Filtrar por período y ordenar: más recientes primero, sin fecha al final
+    if (anoDesde > 0) {
+      todos = todos.filter(i => {
+        const ano = parseInt(i.fecha, 10);
+        return !ano || ano >= anoDesde;
+      });
+    }
+    todos.sort((a, b) => {
+      const fa = parseInt(a.fecha, 10) || 0;
+      const fb = parseInt(b.fecha, 10) || 0;
+      return fb - fa;
+    });
+
+    BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras en este período.');
     contenedor.dataset.cargado = '1';
   }
 
@@ -332,8 +345,11 @@ window.BLG_VERSION = '__VERSION__';
   function quitarDuplicados(items) {
     const vistos = new Set();
     return items.filter(item => {
-      const clave = (item.titulo || '').toLowerCase() + (item.autores || '').toLowerCase();
-      if (vistos.has(clave)) return false;
+      // Normalizar: sin puntuación, sin artículos iniciales, primeras 40 chars del título
+      const t = (item.titulo || '').toLowerCase().replace(/[^\w\s]/g, '').replace(/^(el|la|los|las|the|a|an|un|una|le|les|l'|il)\s+/, '').trim().substring(0, 40);
+      const a = (item.autores || '').toLowerCase().replace(/[^\w\s]/g, '').trim().substring(0, 30);
+      const clave = t + '|' + a;
+      if (!t || vistos.has(clave)) return false;
       vistos.add(clave);
       return true;
     });
