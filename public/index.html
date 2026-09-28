@@ -274,10 +274,9 @@
 <!-- ═══ NAVEGACIÓN ════════════════════════════════════════════════════════ -->
 <nav role="navigation" aria-label="Secciones principales">
   <div class="tabs" role="tablist">
-    <button class="tab tab-activa" role="tab" data-tab="buscar" aria-selected="true" aria-controls="panel-buscar">🔍 Buscar</button>
-    <button class="tab" role="tab" data-tab="novedades" aria-selected="false" aria-controls="panel-novedades">📰 Novedades &amp; Reseñas</button>
-    <button class="tab" role="tab" data-tab="ensayos" aria-selected="false" aria-controls="panel-ensayos">📄 Ensayos &amp; Crítica</button>
-    <button class="tab" role="tab" data-tab="obras" aria-selected="false" aria-controls="panel-obras">📚 Obras &amp; Libros</button>
+    <button class="tab tab-activa" role="tab" data-tab="buscar" aria-selected="true" aria-controls="panel-buscar">🔍 Buscar Todo</button>
+    <button class="tab" role="tab" data-tab="obras-textos" aria-selected="false" aria-controls="panel-obras-textos">📘 Obras y Textos</button>
+    <button class="tab" role="tab" data-tab="criticas" aria-selected="false" aria-controls="panel-criticas">📝 Críticas y Reseñas</button>
     <button class="tab" role="tab" data-tab="autores" aria-selected="false" aria-controls="panel-autores">✍️ Autores</button>
   </div>
 </nav>
@@ -314,49 +313,26 @@
   </div>
 </section>
 
-<!-- ═══ PANEL: NOVEDADES ═════════════════════════════════════════════════ -->
-<section id="panel-novedades" class="panel" data-panel="novedades" role="tabpanel" hidden>
-  <h2 class="seccion-titulo">Novedades literarias y reseñas recientes</h2>
+<!-- ═══ PANEL: OBRAS Y TEXTOS ════════════════════════════════════════════ -->
+<section id="panel-obras-textos" class="panel" data-panel="obras-textos" role="tabpanel" hidden>
+  <h2 class="seccion-titulo">Novelas, poesía, clásicos y obras teóricas</h2>
 
-  <p class="seccion-titulo">Período de tiempo</p>
-  <div class="periodo-btns" role="group" aria-label="Período de novedades" data-periodo="novedades">
-    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
-    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
-    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
-    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
-  </div>
-
-  <div id="blg-resultados-novedades" aria-live="polite"></div>
+  <div id="blg-resultados-obras-textos" aria-live="polite"></div>
 </section>
 
-<!-- ═══ PANEL: ENSAYOS ═══════════════════════════════════════════════════ -->
-<section id="panel-ensayos" class="panel" data-panel="ensayos" role="tabpanel" hidden>
-  <h2 class="seccion-titulo">Ensayos académicos y crítica literaria</h2>
+<!-- ═══ PANEL: CRÍTICAS Y RESEÑAS ════════════════════════════════════════ -->
+<section id="panel-criticas" class="panel" data-panel="criticas" role="tabpanel" hidden>
+  <h2 class="seccion-titulo">Críticas, reseñas y novedades editoriales</h2>
 
   <p class="seccion-titulo">Período de tiempo</p>
-  <div class="periodo-btns" role="group" aria-label="Período de ensayos" data-periodo="ensayos">
+  <div class="periodo-btns" role="group" aria-label="Período de críticas" data-periodo="criticas">
     <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
     <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
     <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
     <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
   </div>
 
-  <div id="blg-resultados-ensayos" aria-live="polite"></div>
-</section>
-
-<!-- ═══ PANEL: OBRAS ════════════════════════════════════════════════════ -->
-<section id="panel-obras" class="panel" data-panel="obras" role="tabpanel" hidden>
-  <h2 class="seccion-titulo">Obras, libros clásicos y contemporáneos</h2>
-
-  <p class="seccion-titulo">Período de tiempo</p>
-  <div class="periodo-btns" role="group" aria-label="Período de obras" data-periodo="obras">
-    <button class="btn-periodo btn-periodo-activo" data-valor="1" aria-pressed="true">1 año</button>
-    <button class="btn-periodo" data-valor="2" aria-pressed="false">2 años</button>
-    <button class="btn-periodo" data-valor="5" aria-pressed="false">5 años</button>
-    <button class="btn-periodo" data-valor="historico" aria-pressed="false">Desde el inicio</button>
-  </div>
-
-  <div id="blg-resultados-obras" aria-live="polite"></div>
+  <div id="blg-resultados-criticas" aria-live="polite"></div>
 </section>
 
 <!-- ═══ PANEL: AUTORES ══════════════════════════════════════════════════ -->

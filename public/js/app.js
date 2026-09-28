@@ -41,9 +41,8 @@ window.BLG_VERSION = '__VERSION__';
       t.classList.toggle('tab-activa', activo);
     });
     panels.forEach(p => { p.hidden = p.dataset.panel !== destino; });
-    if (destino === 'novedades') cargarNovedades();
-    if (destino === 'ensayos') cargarEnsayos();
-    if (destino === 'obras') cargarObras();
+    if (destino === 'obras-textos') cargarObrasTextos();
+    if (destino === 'criticas') cargarCriticas();
     if (destino === 'autores') renderizarAutores();
   }
 
@@ -72,9 +71,7 @@ window.BLG_VERSION = '__VERSION__';
 
           const panel = grupo.dataset.periodo;
           if (panel === 'buscar') ejecutarBusqueda();
-          if (panel === 'novedades') { delete document.getElementById('blg-resultados-novedades')?.dataset.cargado; cargarNovedades(); }
-          if (panel === 'ensayos')   { delete document.getElementById('blg-resultados-ensayos')?.dataset.cargado;   cargarEnsayos(); }
-          if (panel === 'obras')     { delete document.getElementById('blg-resultados-obras')?.dataset.cargado;     cargarObras(); }
+          if (panel === 'criticas') { delete document.getElementById('blg-resultados-criticas')?.dataset.cargado; cargarCriticas(); }
         });
       });
     });
@@ -226,69 +223,12 @@ window.BLG_VERSION = '__VERSION__';
     BLG_Interfaz.renderizarLista(contenedor, todos, `No se encontraron resultados para «${escHtml(termino)}».`);
   }
 
-  // ── Novedades ─────────────────────────────────────────────────────────────
-  async function cargarNovedades() {
-    const contenedor = document.getElementById('blg-resultados-novedades');
-    if (!contenedor || contenedor.dataset.cargado) return;
-    BLG_Interfaz.mostrarCargando(contenedor);
-    const periodo = obtenerPeriodo('novedades');
-    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
-
-    const [semana, diarios] = await Promise.allSettled([
-      BLG_ServicioDatos.cargarUltimaSemana(),
-      BLG_ServicioDatos.cargarDiarios(),
-    ]);
-    let todos = [
-      ...(semana.value || []),
-      ...(diarios.value || []),
-    ];
-
-    // Fallback: cuando no hay datos pre-construidos, consultar fuentes en vivo
-    if (todos.length === 0) {
-      const [libros1, libros2, crossref] = await Promise.allSettled([
-        BLG_Libros.buscarGoogleBooks('literatura latinoamericana novela'),
-        BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
-        BLG_Crossref.buscar('critica literaria novela', diasAtras),
-      ]);
-      todos = [
-        ...(libros1.value || []),
-        ...(libros2.value || []),
-        ...(crossref.value || []),
-      ];
-    }
-
-    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(todos, diasAtras);
-    BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No hay novedades recientes.');
-    contenedor.dataset.cargado = '1';
-  }
-
-  // ── Ensayos ───────────────────────────────────────────────────────────────
-  async function cargarEnsayos() {
-    const contenedor = document.getElementById('blg-resultados-ensayos');
-    if (!contenedor || contenedor.dataset.cargado) return;
-    BLG_Interfaz.mostrarCargando(contenedor);
-    const periodo = obtenerPeriodo('ensayos');
-    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
-    const [crossref, archivo] = await Promise.allSettled([
-      BLG_Crossref.buscar('critica literaria latinoamerica', diasAtras),
-      BLG_ServicioDatos.cargarArchivo(),
-    ]);
-    const ensayos = [
-      ...(crossref.value || []),
-      ...(archivo.value || []).filter(i => i.tipo === 'ensayo'),
-    ];
-    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(ensayos, diasAtras);
-    BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No se encontraron ensayos.');
-    contenedor.dataset.cargado = '1';
-  }
-
-  // ── Obras ─────────────────────────────────────────────────────────────────
-  async function cargarObras() {
-    const contenedor = document.getElementById('blg-resultados-obras');
+  // ── Obras y Textos ────────────────────────────────────────────────────────
+  async function cargarObrasTextos() {
+    const contenedor = document.getElementById('blg-resultados-obras-textos');
     if (!contenedor || contenedor.dataset.cargado) return;
     BLG_Interfaz.mostrarCargando(contenedor);
 
-    // Fuentes en paralelo: pre-construidas + múltiples APIs en vivo
     const [
       librosJSON,
       google1, google2, google3,
@@ -296,12 +236,12 @@ window.BLG_VERSION = '__VERSION__';
       clasicos,
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      BLG_Libros.buscarGoogleBooks('novela latinoamericana', 'newest'),
-      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction', 'newest'),
-      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela', 'relevance'),
+      BLG_Libros.buscarGoogleBooks('novela latinoamericana poesia', 'newest'),
+      BLG_Libros.buscarGoogleBooks('contemporary world literature fiction poetry', 'newest'),
+      BLG_Libros.buscarGoogleBooks('literatura iberoamericana novela poesia', 'relevance'),
       BLG_Libros.buscarOpenLibrary('novela latinoamericana'),
-      BLG_Libros.buscarOpenLibrary('literatura contemporanea'),
-      BLG_Libros.buscarOpenLibrary('world fiction novel'),
+      BLG_Libros.buscarOpenLibrary('poesia contemporanea'),
+      BLG_Libros.buscarOpenLibrary('world fiction novel poetry'),
       BLG_Gutenberg.buscar('literatura'),
     ]);
 
@@ -317,6 +257,44 @@ window.BLG_VERSION = '__VERSION__';
     ]);
 
     BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras.');
+    contenedor.dataset.cargado = '1';
+  }
+
+  // ── Críticas y Reseñas ────────────────────────────────────────────────────
+  async function cargarCriticas() {
+    const contenedor = document.getElementById('blg-resultados-criticas');
+    if (!contenedor || contenedor.dataset.cargado) return;
+    BLG_Interfaz.mostrarCargando(contenedor);
+    const periodo = obtenerPeriodo('criticas');
+    const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
+
+    const [semana, diarios, crossref1, crossref2, archivo] = await Promise.allSettled([
+      BLG_ServicioDatos.cargarUltimaSemana(),
+      BLG_ServicioDatos.cargarDiarios(),
+      BLG_Crossref.buscar('critica literaria reseña novela', diasAtras),
+      BLG_Crossref.buscar('literary criticism book review', diasAtras),
+      BLG_ServicioDatos.cargarArchivo(),
+    ]);
+
+    let todos = [
+      ...(semana.value || []),
+      ...(diarios.value || []),
+      ...(crossref1.value || []),
+      ...(crossref2.value || []),
+      ...(archivo.value || []).filter(i => i.tipo === 'ensayo' || i.tipo === 'resena' || i.tipo === 'noticia'),
+    ];
+
+    // Fallback cuando no hay datos pre-construidos
+    if (todos.length === 0) {
+      const [fb1, fb2] = await Promise.allSettled([
+        BLG_Crossref.buscar('literary review criticism fiction', diasAtras),
+        BLG_Crossref.buscar('critica literaria latinoamerica ensayo', diasAtras),
+      ]);
+      todos = [...(fb1.value || []), ...(fb2.value || [])];
+    }
+
+    const filtrados = BLG_MotorBusqueda.filtrarPorFecha(quitarDuplicados(todos), diasAtras);
+    BLG_Interfaz.renderizarLista(contenedor, filtrados, 'No se encontraron críticas ni reseñas recientes.');
     contenedor.dataset.cargado = '1';
   }
 
@@ -386,10 +364,9 @@ window.BLG_VERSION = '__VERSION__';
     const form = document.getElementById('blg-form-busqueda');
     form?.addEventListener('submit', e => { e.preventDefault(); ejecutarBusqueda(); });
 
-    // Pre-cargar todos los paneles al inicio con período de 1 año
-    cargarNovedades();
-    cargarEnsayos();
-    cargarObras();
+    // Pre-cargar paneles al inicio
+    cargarObrasTextos();
+    cargarCriticas();
   }
 
   if (document.readyState === 'loading') {
