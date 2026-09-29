@@ -6,7 +6,8 @@
   const BASE = (function () {
     const { hostname, pathname } = location;
     if (hostname === 'localhost' || hostname === '127.0.0.1') return '';
-    return pathname.replace(/\/$/, '').replace(/\/[^/]+$/, '');
+    const m = pathname.match(/^(\/[^/]+)/);
+    return m ? m[1] : '';
   })();
 
   async function cargarJSON(ruta) {
