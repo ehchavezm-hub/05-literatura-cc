@@ -11,28 +11,29 @@ const { guardarArchivo } = require('../servidor/archivo');
 const DATOS = path.join(__dirname, '../public/datos');
 
 // Queries de Google Books: [termino, langRestrict]
+// after:2024 obliga a Google Books a devolver solo publicaciones de 2024 en adelante
 const GB_QUERIES_GLOBAL = [
   // América Latina (español)
-  ['novela latinoamericana poesia contemporanea', 'es'],
-  ['literatura peruana colombiana chilena argentina', 'es'],
-  ['literatura mexicana venezolana ecuatoriana boliviana', 'es'],
-  ['literatura centroamericana caribeña cubana', 'es'],
-  ['literatura brasileña portuguesa contemporanea', 'es'],
-  // Europa (sin restricción de idioma para cubrir cada lengua)
-  ['roman littérature contemporaine poésie française', 'fr'],
-  ['neue deutsche Literatur Roman Gedicht Erzählung', 'de'],
-  ['narrativa italiana contemporanea romanzo poesia', 'it'],
-  ['literatura española novela ensayo contemporaneo', 'es'],
-  ['literatura portuguesa escandinava nórdica', 'pt'],
+  ['novela latinoamericana poesia contemporanea after:2024', 'es'],
+  ['literatura peruana colombiana chilena argentina after:2024', 'es'],
+  ['literatura mexicana venezolana ecuatoriana boliviana after:2024', 'es'],
+  ['literatura centroamericana caribeña cubana after:2024', 'es'],
+  ['literatura brasileña portuguesa contemporanea after:2024', 'es'],
+  // Europa
+  ['roman littérature contemporaine poésie française after:2024', 'fr'],
+  ['neue deutsche Literatur Roman Gedicht Erzählung after:2024', 'de'],
+  ['narrativa italiana contemporanea romanzo poesia after:2024', 'it'],
+  ['literatura española novela ensayo contemporaneo after:2024', 'es'],
+  ['literatura portuguesa escandinava nórdica after:2024', 'pt'],
   // Asia y Oceanía
-  ['contemporary asian literature fiction translation', ''],
-  ['japanese korean chinese literature novel translation', ''],
-  ['south asian indian literature fiction poetry', ''],
-  ['african australian world literature fiction', ''],
+  ['contemporary asian literature fiction translation after:2024', ''],
+  ['japanese korean chinese literature novel translation after:2024', ''],
+  ['south asian indian literature fiction poetry after:2024', ''],
+  ['african australian world literature fiction after:2024', ''],
   // Anglófona global
-  ['new literary fiction prize winner booker', 'en'],
-  ['contemporary world fiction poetry translation', 'en'],
-  ['literary novel short stories essay criticism', 'en'],
+  ['new literary fiction prize winner booker after:2024', 'en'],
+  ['contemporary world fiction poetry translation after:2024', 'en'],
+  ['literary novel short stories essay criticism after:2024', 'en'],
 ];
 
 // Google News RSS — funciona bien desde servidores cloud

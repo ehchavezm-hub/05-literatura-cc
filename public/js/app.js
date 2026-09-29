@@ -225,94 +225,6 @@ window.BLG_VERSION = '__VERSION__';
   }
 
   // ── Obras y Textos ────────────────────────────────────────────────────────
-  // Pool completo de editoriales del mundo (290+) — se rotan 14 por búsqueda
-  const EDITORIALES_BUSQUEDA = [
-    // ── América Latina ──────────────────────────────────────────────────
-    'Alfaguara','Anagrama','Fondo de Cultura Economica','Seix Barral','Tusquets',
-    'Planeta','Acantilado','Eterna Cadencia','Sudamericana','Peisa',
-    'Sexto Piso','Era Mexico','LOM Ediciones','Cal y Arena','Adriana Hidalgo',
-    'Joaquin Mortiz','IEP Peru','Fondo Editorial PUCP','Sur Libreros Editores',
-    'Editorial Norma','Panamericana Editorial','Rey Naranjo Editores','Laguna Libros',
-    'Pehuen Editores','Hueders','Das Kapital Ediciones','Alquimia Ediciones',
-    'Monte Avila Editores','Biblioteca Ayacucho','Casa de las Americas','Letras Cubanas',
-    'Trilce','Fin de Siglo','Milla Batres','Losada','Emecé',
-    // ── Brasil ─────────────────────────────────────────────────────────
-    'Companhia das Letras','Rocco','Record','Objetiva','Intrinseca',
-    // ── Francia ────────────────────────────────────────────────────────
-    'Gallimard','Seuil','Actes Sud','Fayard','Flammarion','Grasset',
-    'Editions Grasset','Librairie Artheme Fayard','Hachette Roman','Larousse',
-    // ── Alemania / Austria / Suiza ─────────────────────────────────────
-    'Suhrkamp','S Fischer Verlag','Rowohlt','Carl Hanser Verlag','Diogenes Verlag',
-    'dtv','Paul Zsolnay Verlag','Residenz Verlag','Haymon Verlag',
-    'Nagel Kimche','Editions Zoe','Ernst Klett Verlag',
-    // ── Italia ─────────────────────────────────────────────────────────
-    'Einaudi','Mondadori','Feltrinelli','Adelphi','Garzanti',
-    'Rizzoli','Guanda','Mauri Spagnol',
-    // ── Reino Unido ────────────────────────────────────────────────────
-    'Bloomsbury Publishing','Faber Faber','Jonathan Cape','Virago Press',
-    'Granta Publications','Elsevier','Oxford University Press',
-    'Cambridge University Press','Routledge','Taylor and Francis',
-    'Pearson Education',
-    // ── EE. UU. ────────────────────────────────────────────────────────
-    'Penguin Random House','HarperCollins','Simon Schuster','Macmillan Publishers',
-    'Hachette Book Group','Knopf','Viking Press','Vintage Books','Doubleday',
-    'Scribner','Farrar Straus Giroux','W W Norton','Algonquin Books',
-    'Sourcebooks','Chronicle Books','Little Brown','Grand Central Publishing',
-    'Archipelago Books','Pushkin Press','And Other Stories',
-    'Europa Editions','New Directions Publishing','Restless Books',
-    'Workman Publishing','Hay House','Scholastic',
-    // ── Canadá ─────────────────────────────────────────────────────────
-    'House of Anansi Press','McClelland Stewart','Coach House Books',
-    // ── Portugal ───────────────────────────────────────────────────────
-    'Dom Quixote','Relógio d Água','Porto Editora','Leya',
-    // ── España (Planeta group) ─────────────────────────────────────────
-    'Espasa','Destino Ediciones','Editorial Planeta','Santillana','Loqueleo',
-    // ── Países Bajos / Bélgica ─────────────────────────────────────────
-    'De Bezige Bij','Atlas Contact','Luitingh-Sijthoff',
-    'Lannoo Publishers','Standaard Uitgeverij',
-    // ── Escandinavia ───────────────────────────────────────────────────
-    'Bonniers','Norstedts','Albert Bonniers Forlag',
-    'Gyldendal Norsk Forlag','Cappelen Damm','Aschehoug Norway',
-    'Gyldendal Denmark','Rosinante Forlag',
-    'WSOY Finland','Otava Publishing','Tammi Publishers',
-    // ── Europa del Este ────────────────────────────────────────────────
-    'Eksmo','AST','Azbooka Atticus',
-    'Magveto Kiado','Polirom Romania','Humanitas Romania',
-    'Folio Publishing Ukraine','Laguna Serbia','Fraktura Croatia',
-    'Cankarjeva Zalozba','Slovart Slovakia','Colibri Bulgaria',
-    // ── Irlanda / Grecia ───────────────────────────────────────────────
-    'The Lilliput Press','New Island Books','Gill Books Ireland',
-    'Estia Publications','Kastaniotis Editions','Metaichmio',
-    // ── Turquía ────────────────────────────────────────────────────────
-    'Yapi Kredi Yayinlari','Iletisim Yayinlari','Can Yayinlari',
-    // ── India ──────────────────────────────────────────────────────────
-    'Penguin India','HarperCollins India','Rupa Publications',
-    'Speaking Tiger Books','Aleph Book Company',
-    // ── Japón ──────────────────────────────────────────────────────────
-    'Bungeishunju','Shinchosha','Kodansha','Iwanami Shoten',
-    'Shueisha','Shogakukan','Kadokawa','Gakken',
-    // ── Corea del Sur ──────────────────────────────────────────────────
-    'Minumsa','Changbi Publishers','Munhakdongne','Moonji Publishing',
-    // ── China ──────────────────────────────────────────────────────────
-    "People's Literature Publishing House",'Commercial Press China',
-    'Jiangsu Phoenix Publishing',
-    // ── Resto de Asia ──────────────────────────────────────────────────
-    'Anvil Publishing Philippines','Gramedia Pustaka Utama',
-    'Epigram Books Singapore','INK Literary Monthly Taiwan',
-    'Oxford University Press Pakistan',
-    // ── Australia / NZ ─────────────────────────────────────────────────
-    'Text Publishing','Allen Unwin','Scribe Publications',
-    'Victoria University Press NZ',
-    // ── África ─────────────────────────────────────────────────────────
-    'Jonathan Ball Publishers','Cassava Republic Press','Farafina Books',
-    'Kwani Trust Kenya','Weaver Press Zimbabwe','Presence Africaine',
-    'East African Educational Publishers',
-    // ── Oriente Medio ──────────────────────────────────────────────────
-    'Dar Al Shorouk','Am Oved Publishers','Dar An-Nahar Lebanon',
-    // ── Editoriales de traducción ───────────────────────────────────────
-    'Seagull Books','Peirene Press','World Editions','Biblioasis',
-  ];
-
   async function cargarObrasTextos() {
     const contenedor = document.getElementById('blg-resultados-obras-textos');
     if (!contenedor || contenedor.dataset.cargado) return;
@@ -322,45 +234,23 @@ window.BLG_VERSION = '__VERSION__';
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
     const anoActual = new Date().getFullYear();
     const anoDesde  = isFinite(diasAtras) ? anoActual - Math.ceil(diasAtras / 365) : 0;
-    // Filtro de fecha para Google Books API (after:YYYY restringe la búsqueda)
     const gbFiltro  = anoDesde > 0 ? ` after:${anoDesde}` : '';
 
-    // 14 editoriales rotativas al azar (mayor cobertura)
-    const eds = EDITORIALES_BUSQUEDA.slice().sort(() => Math.random() - 0.5).slice(0, 14);
-    const busquedasEditoriales = eds.map(ed =>
-      BLG_Libros.buscarGoogleBooks(`inpublisher:"${ed}"${gbFiltro}`, 'newest', 20)
-    );
-
+    // Solo 4 queries GB cliente (sin API key → conservar cuota)
     const [
       librosJSON,
-      google1, google2, google3, google4, google5,
-      google6, google7, google8, google9, google10,
-      open1, open2, open3,
+      google1, google2, google3, google4,
+      open1, open2,
       clasicos,
-      ...edResults
     ] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      // América Latina
-      BLG_Libros.buscarGoogleBooks(`novela latinoamericana poesia${gbFiltro}`, 'newest', 40),
-      BLG_Libros.buscarGoogleBooks(`literatura iberoamericana novela ensayo${gbFiltro}`, 'newest', 40),
-      // Europa
-      BLG_Libros.buscarGoogleBooks(`roman littérature contemporaine poésie${gbFiltro}`, 'newest', 40),
-      BLG_Libros.buscarGoogleBooks(`neue deutsche Literatur Roman Gedicht${gbFiltro}`, 'newest', 40),
-      BLG_Libros.buscarGoogleBooks(`narrativa italiana contemporanea romanzo${gbFiltro}`, 'newest', 40),
-      // Asia / África / Oceanía
-      BLG_Libros.buscarGoogleBooks(`contemporary asian african literature fiction${gbFiltro}`, 'newest', 40),
-      BLG_Libros.buscarGoogleBooks(`japanese korean chinese literature novel${gbFiltro}`, 'newest', 40),
-      // Anglófona global
-      BLG_Libros.buscarGoogleBooks(`new literary fiction prize winner booker${gbFiltro}`, 'newest', 40),
-      BLG_Libros.buscarGoogleBooks(`contemporary world fiction poetry translation${gbFiltro}`, 'newest', 40),
-      // Premio Nobel / premios globales
-      BLG_Libros.buscarGoogleBooks(`nobel prize literature world fiction${gbFiltro}`, 'newest', 40),
-      // Open Library
+      BLG_Libros.buscarGoogleBooks(`novela latinoamericana poesia contemporanea${gbFiltro}`, 'newest', 20),
+      BLG_Libros.buscarGoogleBooks(`new literary fiction prize winner booker${gbFiltro}`, 'newest', 20),
+      BLG_Libros.buscarGoogleBooks(`roman littérature contemporaine poésie${gbFiltro}`, 'newest', 20),
+      BLG_Libros.buscarGoogleBooks(`contemporary world fiction poetry translation${gbFiltro}`, 'newest', 20),
       BLG_Libros.buscarOpenLibrary('novela latinoamericana poesia', 20),
-      BLG_Libros.buscarOpenLibrary('poesia contemporanea', 20),
       BLG_Libros.buscarOpenLibrary('world fiction literary novel', 20),
       BLG_Gutenberg.buscar('literatura'),
-      ...busquedasEditoriales,
     ]);
 
     let todos = quitarDuplicados([
@@ -369,17 +259,9 @@ window.BLG_VERSION = '__VERSION__';
       ...(google2.value      || []),
       ...(google3.value      || []),
       ...(google4.value      || []),
-      ...(google5.value      || []),
-      ...(google6.value      || []),
-      ...(google7.value      || []),
-      ...(google8.value      || []),
-      ...(google9.value      || []),
-      ...(google10.value     || []),
-      ...edResults.flatMap(r => r.value || []),
-      // Open Library y Gutenberg al final (más títulos históricos)
+      // Open Library y Gutenberg al final (títulos históricos)
       ...(open1.value        || []),
       ...(open2.value        || []),
-      ...(open3.value        || []),
       ...(clasicos.value     || []),
     ]);
 
