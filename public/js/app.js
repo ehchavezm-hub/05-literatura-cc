@@ -234,35 +234,21 @@ window.BLG_VERSION = '__VERSION__';
     const diasAtras = BLG_MotorBusqueda.calcularDiasAtras(periodo);
     const anoActual = new Date().getFullYear();
     const anoDesde  = isFinite(diasAtras) ? anoActual - Math.ceil(diasAtras / 365) : 0;
-    const gbFiltro  = anoDesde > 0 ? ` after:${anoDesde}` : '';
 
-    // Solo 4 queries GB cliente (sin API key → conservar cuota)
-    const [
-      librosJSON,
-      google1, google2, google3, google4,
-      open1, open2,
-      clasicos,
-    ] = await Promise.allSettled([
+    // Fuentes sin API key: JSON pre-construido (principal) + OpenLibrary + Gutenberg
+    // Las llamadas a Google Books sin key se hacen solo en búsqueda por autor/término
+    const [librosJSON, open1, open2, clasicos] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      BLG_Libros.buscarGoogleBooks(`novela latinoamericana poesia contemporanea${gbFiltro}`, 'newest', 20),
-      BLG_Libros.buscarGoogleBooks(`new literary fiction prize winner booker${gbFiltro}`, 'newest', 20),
-      BLG_Libros.buscarGoogleBooks(`roman littérature contemporaine poésie${gbFiltro}`, 'newest', 20),
-      BLG_Libros.buscarGoogleBooks(`contemporary world fiction poetry translation${gbFiltro}`, 'newest', 20),
-      BLG_Libros.buscarOpenLibrary('novela latinoamericana poesia', 20),
-      BLG_Libros.buscarOpenLibrary('world fiction literary novel', 20),
+      BLG_Libros.buscarOpenLibrary('novela latinoamericana poesia', 30),
+      BLG_Libros.buscarOpenLibrary('world fiction literary novel poetry', 30),
       BLG_Gutenberg.buscar('literatura'),
     ]);
 
     let todos = quitarDuplicados([
-      ...(librosJSON.value   || []),
-      ...(google1.value      || []),
-      ...(google2.value      || []),
-      ...(google3.value      || []),
-      ...(google4.value      || []),
-      // Open Library y Gutenberg al final (títulos históricos)
-      ...(open1.value        || []),
-      ...(open2.value        || []),
-      ...(clasicos.value     || []),
+      ...(librosJSON.value || []),
+      ...(open1.value      || []),
+      ...(open2.value      || []),
+      ...(clasicos.value   || []),
     ]);
 
     // Filtrar por período; excluir fechas futuras; sin fecha → siempre mostrar

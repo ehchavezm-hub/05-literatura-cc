@@ -90,7 +90,7 @@ const EDITORIALES_PAIS = [
 async function buscarGoogleBooksPorEditorial(editorial) {
   const key = process.env.GOOGLE_BOOKS_API_KEY;
   const keyParam = key ? `&key=${key}` : '';
-  const url = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:"${encodeURIComponent(editorial.nombre)}"&maxResults=5&orderBy=newest${keyParam}`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:"${encodeURIComponent(editorial.nombre)}"+after:2023&maxResults=5&orderBy=newest${keyParam}`;
   try {
     const datos = await fetchConLimite(url);
     return (datos.items || []).map(item => {
