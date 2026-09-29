@@ -90,23 +90,26 @@ const EDITORIALES_PAIS = [
 async function buscarGoogleBooksPorEditorial(editorial) {
   const key = process.env.GOOGLE_BOOKS_API_KEY;
   const keyParam = key ? `&key=${key}` : '';
-  const url = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:"${encodeURIComponent(editorial.nombre)}"+after:2023&maxResults=5&orderBy=newest${keyParam}`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=inpublisher:"${encodeURIComponent(editorial.nombre)}"&maxResults=10&orderBy=newest${keyParam}`;
   try {
     const datos = await fetchConLimite(url);
-    return (datos.items || []).map(item => {
-      const info = item.volumeInfo || {};
-      return {
-        titulo: info.title || '',
-        autores: (info.authors || []).join(', '),
-        url: info.infoLink || '',
-        fuente: editorial.nombre,
-        pais: editorial.pais,
-        tipo: 'libro',
-        fecha: info.publishedDate?.substring(0, 4) || null,
-        editorial: info.publisher || editorial.nombre,
-        descripcion: info.description?.substring(0, 300) || '',
-      };
-    });
+    return (datos.items || [])
+      .map(item => {
+        const info = item.volumeInfo || {};
+        return {
+          titulo: info.title || '',
+          autores: (info.authors || []).join(', '),
+          url: info.infoLink || '',
+          fuente: editorial.nombre,
+          pais: editorial.pais,
+          tipo: 'libro',
+          fecha: info.publishedDate?.substring(0, 4) || null,
+          editorial: info.publisher || editorial.nombre,
+          descripcion: info.description?.substring(0, 300) || '',
+        };
+      })
+      .filter(item => !item.fecha || parseInt(item.fecha, 10) >= 2024)
+      .slice(0, 5);
   } catch {
     return [];
   }

@@ -11,29 +11,29 @@ const { guardarArchivo } = require('../servidor/archivo');
 const DATOS = path.join(__dirname, '../public/datos');
 
 // Queries de Google Books: [termino, langRestrict]
-// after:2023 → devuelve publicaciones desde 2024 en adelante
+// Se filtra por minYear=2024 en buscarGoogleBooks para garantizar libros recientes
 const GB_QUERIES_GLOBAL = [
   // América Latina (español)
-  ['novela latinoamericana poesia contemporanea after:2023', 'es'],
-  ['literatura peruana colombiana chilena argentina after:2023', 'es'],
-  ['literatura mexicana venezolana ecuatoriana boliviana after:2023', 'es'],
-  ['literatura centroamericana caribeña cubana after:2023', 'es'],
-  ['literatura brasileña portuguesa contemporanea after:2023', 'es'],
+  ['novela latinoamericana poesia contemporanea', 'es'],
+  ['literatura peruana colombiana chilena argentina', 'es'],
+  ['literatura mexicana venezolana ecuatoriana boliviana', 'es'],
+  ['literatura centroamericana caribeña cubana', 'es'],
+  ['literatura brasileña portuguesa contemporanea', 'es'],
   // Europa
-  ['roman littérature contemporaine poésie française after:2023', 'fr'],
-  ['neue deutsche Literatur Roman Gedicht Erzählung after:2023', 'de'],
-  ['narrativa italiana contemporanea romanzo poesia after:2023', 'it'],
-  ['literatura española novela ensayo contemporaneo after:2023', 'es'],
-  ['literatura portuguesa escandinava nórdica after:2023', 'pt'],
+  ['roman littérature contemporaine poésie française', 'fr'],
+  ['neue deutsche Literatur Roman Gedicht Erzählung', 'de'],
+  ['narrativa italiana contemporanea romanzo poesia', 'it'],
+  ['literatura española novela ensayo contemporaneo', 'es'],
+  ['literatura portuguesa escandinava nórdica', 'pt'],
   // Asia y Oceanía
-  ['contemporary asian literature fiction translation after:2023', ''],
-  ['japanese korean chinese literature novel translation after:2023', ''],
-  ['south asian indian literature fiction poetry after:2023', ''],
-  ['african australian world literature fiction after:2023', ''],
+  ['contemporary asian literature fiction translation', ''],
+  ['japanese korean chinese literature novel translation', ''],
+  ['south asian indian literature fiction poetry', ''],
+  ['african australian world literature fiction', ''],
   // Anglófona global
-  ['new literary fiction prize winner booker after:2023', 'en'],
-  ['contemporary world fiction poetry translation after:2023', 'en'],
-  ['literary novel short stories essay criticism after:2023', 'en'],
+  ['new literary fiction prize winner booker', 'en'],
+  ['contemporary world fiction poetry translation', 'en'],
+  ['literary novel short stories essay criticism', 'en'],
 ];
 
 // Google News RSS — funciona bien desde servidores cloud
@@ -122,8 +122,8 @@ async function main() {
   console.log('Actualizando datos literarios…');
   console.log(`  GOOGLE_BOOKS_API_KEY: ${process.env.GOOGLE_BOOKS_API_KEY ? 'configurada ✓' : 'NO CONFIGURADA (rate-limit sin clave)'}`);
 
-  // Ejecutar todas las queries en paralelo
-  const gbPromises = GB_QUERIES_GLOBAL.map(([q, lang]) => buscarGoogleBooks(q, 'newest', 15, lang));
+  // Ejecutar todas las queries en paralelo; minYear=2024 filtra programáticamente
+  const gbPromises = GB_QUERIES_GLOBAL.map(([q, lang]) => buscarGoogleBooks(q, 'newest', 15, lang, 2024));
   const gnewsPromises = GNEWS_QUERIES.map(q => fetchGNewsRSS(q));
 
   const [semana, anio, diarios, editoriales, openLib1, openLib2, ...resto] = await Promise.allSettled([

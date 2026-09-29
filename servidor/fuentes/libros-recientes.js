@@ -18,25 +18,33 @@ async function buscarOpenLibrary(termino) {
   }
 }
 
-async function buscarGoogleBooks(termino, orderBy = 'newest', maxResults = 15, langRestrict = 'es') {
+async function buscarGoogleBooks(termino, orderBy = 'newest', maxResults = 15, langRestrict = 'es', minYear = null) {
   const key = process.env.GOOGLE_BOOKS_API_KEY;
   const keyParam = key ? `&key=${key}` : '';
   const langParam = langRestrict ? `&langRestrict=${langRestrict}` : '';
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}${langParam}&maxResults=${maxResults}&orderBy=${orderBy}${keyParam}`;
+  // Pedir el doble para compensar los que filtramos por fecha
+  const limit = minYear ? Math.min(maxResults * 2, 40) : maxResults;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(termino)}${langParam}&maxResults=${limit}&orderBy=${orderBy}${keyParam}`;
   try {
     const datos = await fetchConLimite(url);
-    return (datos.items || []).map(item => {
-      const info = item.volumeInfo || {};
-      return {
-        titulo: info.title || '',
-        autores: (info.authors || []).join(', '),
-        url: info.infoLink || '',
-        fuente: 'Google Books',
-        tipo: 'libro',
-        fecha: info.publishedDate?.substring(0, 4) || null,
-        editorial: info.publisher || '',
-      };
-    });
+    return (datos.items || [])
+      .map(item => {
+        const info = item.volumeInfo || {};
+        return {
+          titulo: info.title || '',
+          autores: (info.authors || []).join(', '),
+          url: info.infoLink || '',
+          fuente: 'Google Books',
+          tipo: 'libro',
+          fecha: info.publishedDate?.substring(0, 4) || null,
+          editorial: info.publisher || '',
+        };
+      })
+      .filter(item => {
+        if (!minYear || !item.fecha) return true;
+        return parseInt(item.fecha, 10) >= minYear;
+      })
+      .slice(0, maxResults);
   } catch {
     return [];
   }

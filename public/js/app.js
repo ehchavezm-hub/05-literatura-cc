@@ -235,44 +235,44 @@ window.BLG_VERSION = '__VERSION__';
     const anoActual = new Date().getFullYear();
     const anoDesde  = isFinite(diasAtras) ? anoActual - Math.ceil(diasAtras / 365) : 0;
 
-    // Fuentes sin API key: JSON pre-construido (principal) + OpenLibrary + Gutenberg
-    // Las llamadas a Google Books sin key se hacen solo en búsqueda por autor/término
+    // Fuentes:
+    //  - librosJSON: JSON pre-construido por el servidor (no filtrar por fecha;
+    //    el servidor ya lo limita a publicaciones recientes con after:2023)
+    //  - OL + Gutenberg: títulos históricos; solo en "5 años" y "Desde el inicio"
+    const incluirHistoricos = !isFinite(diasAtras) || diasAtras >= 1825; // 5 años+
     const [librosJSON, open1, open2, clasicos] = await Promise.allSettled([
       BLG_ServicioDatos.cargarLibrosRecientes(),
-      BLG_Libros.buscarOpenLibrary('novela latinoamericana poesia', 30),
-      BLG_Libros.buscarOpenLibrary('world fiction literary novel poetry', 30),
-      BLG_Gutenberg.buscar('literatura'),
+      incluirHistoricos ? BLG_Libros.buscarOpenLibrary('novela latinoamericana poesia', 30)        : Promise.resolve([]),
+      incluirHistoricos ? BLG_Libros.buscarOpenLibrary('world fiction literary novel poetry', 30)  : Promise.resolve([]),
+      incluirHistoricos ? BLG_Gutenberg.buscar('literatura')                                       : Promise.resolve([]),
     ]);
 
-    let todos = quitarDuplicados([
-      ...(librosJSON.value || []),
-      ...(open1.value      || []),
-      ...(open2.value      || []),
-      ...(clasicos.value   || []),
-    ]);
-
-    // Filtrar por período; excluir fechas futuras; sin fecha → siempre mostrar
-    todos = todos.filter(i => {
+    // El JSON pre-construido se muestra completo — ya es "reciente" por diseño
+    const libros       = (librosJSON.value || []).filter(i => !i.fecha || parseInt(i.fecha) <= anoActual);
+    const historicos   = [...(open1.value || []), ...(open2.value || []), ...(clasicos.value || [])];
+    const histFiltrados = historicos.filter(i => {
       if (!i.fecha) return true;
-      const solo = String(i.fecha).trim();
-      const ano = parseInt(solo, 10);
-      if (!ano) return true;
-      if (ano > anoActual) return false; // fecha futura → descartar
-      if (anoDesde > 0 && ano < anoDesde) return false;
-      return true;
+      const ano = parseInt(i.fecha, 10);
+      if (!ano || ano > anoActual) return false;
+      return anoDesde === 0 || ano >= anoDesde;
     });
+
+    let todos = quitarDuplicados([...libros, ...histFiltrados]);
 
     // Ordenar: más recientes primero; sin fecha al final
     todos.sort((a, b) => {
-      const ta = a.fecha ? new Date(a.fecha).getTime() : 0;
-      const tb = b.fecha ? new Date(b.fecha).getTime() : 0;
+      const ta = a.fecha ? parseInt(a.fecha) : 0;
+      const tb = b.fecha ? parseInt(b.fecha) : 0;
       if (tb > 0 && ta > 0) return tb - ta;
       if (tb > 0) return 1;
       if (ta > 0) return -1;
       return 0;
     });
 
-    BLG_Interfaz.renderizarLista(contenedor, todos, 'No se encontraron obras en este período.');
+    const msgVacio = libros.length === 0
+      ? 'Datos en actualización — selecciona "Desde el inicio" para ver clásicos disponibles.'
+      : 'No se encontraron obras en este período.';
+    BLG_Interfaz.renderizarLista(contenedor, todos, msgVacio);
     contenedor.dataset.cargado = '1';
   }
 
